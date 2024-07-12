@@ -91,7 +91,7 @@ const Text: React.FC<CustomTextProps> = ({
 
   return (
     <TextNative
-      style={[fontStyle, style]}
+      style={[style, fontStyle]}
       numberOfLines={lines}
       ellipsizeMode={lines ? 'tail' : undefined}
     >

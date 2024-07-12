@@ -17,8 +17,10 @@ import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
 
+// Prevent SplashScreen from hiding automatically
 SplashScreen.preventAutoHideAsync();
 
+// Create Apollo Client
 const httpLink = createHttpLink({
   uri: 'https://gw.devapi.honganh.vn/graphql',
 });
@@ -60,10 +62,6 @@ export default function RootLayout() {
     }
   }, [fontsLoaded, error]);
 
-  if (!fontsLoaded) {
-    return null;
-  }
-
   if (!fontsLoaded && !error) {
     return null;
   }
@@ -74,11 +72,7 @@ export default function RootLayout() {
         <ThemeProvider
           value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
         >
-          <Stack
-            screenOptions={{
-              headerShown: false,
-            }}
-          >
+          <Stack screenOptions={{ headerShown: false }}>
             <Stack.Screen name="index" />
             <Stack.Screen name="(auth)" options={{ headerShown: false }} />
             <Stack.Screen
