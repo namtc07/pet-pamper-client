@@ -44,6 +44,7 @@ const App = () => {
     </SafeAreaView>
   );
 };
+
 export default App;
 
 const styles = StyleSheet.create({

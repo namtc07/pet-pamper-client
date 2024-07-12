@@ -1,3 +1,7 @@
+import DatePicker from '@/app/_components/date-picker';
+import MenuTabBlock from '@/app/_components/menu-tab-block';
+import ProductList from '@/app/_components/product-list';
+import Svgs from '@/assets/svgs';
 import React, { useCallback, useRef, useState } from 'react';
 import {
   Animated,
@@ -11,16 +15,33 @@ import {
 } from 'react-native';
 import Carousel from 'react-native-reanimated-carousel';
 import Icon from 'react-native-vector-icons/Ionicons';
-import DatePicker from '@/app/_components/date-picker';
-import MenuTabBlock from '@/app/_components/menu-tab-block';
-import ProductList from '@/app/_components/product-list';
-import Svgs from '@/assets/svgs';
-import { createBackgroundColorInterpolation, fadeIn, fadeOut } from './helpers';
-import { banners, styles } from './styles';
+import Badge from '@/app/_components/Badge';
 import StatusbarCustom from '@/components/StatusbarCustom';
 import { StatusBarStyle } from 'expo-status-bar';
-import Badge from '@/app/_components/Badge';
-import { router } from 'expo-router';
+import { banners, styles } from './styles';
+
+export const createBackgroundColorInterpolation = (scrollY: any) =>
+  scrollY.interpolate({
+    inputRange: [0, 100],
+    outputRange: ['rgba(255, 255, 255, 0)', 'rgba(255, 255, 255, 1)'],
+    extrapolate: 'clamp',
+  });
+
+export const fadeIn = (fadeAnim: any) => {
+  Animated.timing(fadeAnim, {
+    toValue: 1,
+    duration: 100,
+    useNativeDriver: true,
+  }).start();
+};
+
+export const fadeOut = (fadeAnim: any) => {
+  Animated.timing(fadeAnim, {
+    toValue: 0,
+    duration: 30,
+    useNativeDriver: true,
+  }).start();
+};
 
 const HomeScreen: React.FC = () => {
   const scrollViewRef = useRef<ScrollView>(null);

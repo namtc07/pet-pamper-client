@@ -6,7 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "pet-pamper-client",
-    "userInterfaceStyle": "automatic", 
+    "userInterfaceStyle": "automatic",
     "jsEngine": "jsc",
     "splash": {
       "image": "./assets/images/splash.png",
@@ -65,6 +65,7 @@
     "experiments": {
       "typedRoutes": true
     },
+    "owner": "namtc07",
     "extra": {
       "router": {
         "origin": false
@@ -73,6 +74,11 @@
         "projectId": "9a3d3a64-4584-43e7-bb61-28b082ccc0fb"
       }
     },
-    "owner": "namtc07"
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/9a3d3a64-4584-43e7-bb61-28b082ccc0fb"
+    }
   }
 }

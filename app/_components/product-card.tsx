@@ -127,7 +127,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ modeRow, styleMode }) => {
       style={[
         styles.container,
         modeRow ? styles.containerRow : styles.containerColumn,
-        // styleMode,
+        styleMode,
       ]}
     >
       <View style={styles.imageContainer}>

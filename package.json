@@ -29,6 +29,7 @@
     "@expo/vector-icons": "^14.0.2",
     "@react-native-async-storage/async-storage": "1.23.1",
     "@react-native-community/hooks": "^3.0.0",
+    "@react-native-community/image-editor": "^4.2.0",
     "@react-native-google-signin/google-signin": "^12.2.1",
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/stack": "^6.4.0",
@@ -43,7 +44,7 @@
     "dayjs": "^1.11.11",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-prettier": "^5.0.0",
-    "expo": "~51.0.20",
+    "expo": "^51.0.20",
     "expo-auth-session": "~5.5.2",
     "expo-constants": "~16.0.2",
     "expo-dev-client": "~4.0.20",
@@ -64,7 +65,7 @@
     "react": "18.2.0",
     "react-apollo": "^3.1.5",
     "react-dom": "18.2.0",
-    "react-native": "0.74.3",
+    "react-native": "^0.74.3",
     "react-native-animatable": "^1.4.0",
     "react-native-calendars": "^1.1305.0",
     "react-native-fbsdk-next": "^13.0.0",
@@ -115,5 +116,11 @@
     "react-test-renderer": "18.2.0",
     "typescript": "~5.3.3"
   },
-  "private": true
+  "private": true,
+  "resolutions": {
+    "react-docgen-typescript": "2.2.2"
+  },
+  "overrides": {
+    "react-docgen-typescript": "2.2.2"
+  }
 }

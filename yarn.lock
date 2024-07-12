@@ -2301,6 +2301,11 @@
   resolved "https://registry.npmjs.org/@react-native-community/hooks/-/hooks-3.0.0.tgz#af5f2ca32eea59b792ce9e3d9a4cf0354f9b195f"
   integrity sha512-g2OyxXHfwIytXUJitBR6Z/ISoOfp0WKx5FOv+NqJ/CrWjRDcTw6zXE5I1C9axfuh30kJqzWchVfCDrkzZYTxqg==
 
+"@react-native-community/image-editor@^4.2.0":
+  version "4.2.0"
+  resolved "https://registry.npmjs.org/@react-native-community/image-editor/-/image-editor-4.2.0.tgz#5b7d5d56ca6170991cdeecc36ee2714cde1e2438"
+  integrity sha512-awyoOwElkAI+jrXxhm1kicXIKJXUnq8hE4RRdFs8HkCAdCOjNtAQPRneD+eHe9pOGKuX2h8sqgIJKqMv9wnwqw==
+
 "@react-native-google-signin/google-signin@^12.2.1":
   version "12.2.1"
   resolved "https://registry.npmjs.org/@react-native-google-signin/google-signin/-/google-signin-12.2.1.tgz#242247ab18ea7bb3a1dcabb50df7ad236f104294"
@@ -6126,7 +6131,7 @@ expo-web-browser@~13.0.0, expo-web-browser@~13.0.3:
   resolved "https://registry.npmjs.org/expo-web-browser/-/expo-web-browser-13.0.3.tgz#dceb05dbc187b498ca937b02adf385b0232a4e92"
   integrity sha512-HXb7y82ApVJtqk8tManyudtTrCtx8xcUnVzmJECeHCB0SsWSQ+penVLZxJkcyATWoJOsFMnfVSVdrTcpKKGszQ==
 
-expo@~51.0.20:
+expo@^51.0.20:
   version "51.0.20"
   resolved "https://registry.npmjs.org/expo/-/expo-51.0.20.tgz#e34ce895875e29bb46a818ff5be7178b4fce2bfb"
   integrity sha512-EmNZel6j7pU4YF1QcIcgpVdYsA1lASQcEw9PPSevjreNT6nlge2CNHB6mAphAKGz5PdgcWYBn/v4qQj1/FJuZQ==
@@ -9827,10 +9832,10 @@ react-devtools@^5.2.0:
     react-devtools-core "5.3.1"
     update-notifier "^2.1.0"
 
-react-docgen-typescript@^1.20.4:
-  version "1.22.0"
-  resolved "https://registry.npmjs.org/react-docgen-typescript/-/react-docgen-typescript-1.22.0.tgz#00232c8e8e47f4437cac133b879b3e9437284bee"
-  integrity sha512-MPLbF8vzRwAG3GcjdL+OHQlhgtWsLTXs+7uJiHfEeT3Ur7IsZaNYqRTLQ9sj2nB6M6jylcPCeCmH7qbszJmecg==
+react-docgen-typescript@2.2.2, react-docgen-typescript@^1.20.4:
+  version "2.2.2"
+  resolved "https://registry.npmjs.org/react-docgen-typescript/-/react-docgen-typescript-2.2.2.tgz#4611055e569edc071204aadb20e1c93e1ab1659c"
+  integrity sha512-tvg2ZtOpOi6QDwsb3GZhOjDkkX0h8Z2gipvTg6OVMUyoYoURhEiRNePT8NZItTVCDh39JJHnLdfCOkzoLbFnTg==
 
 react-dom@18.2.0:
   version "18.2.0"
@@ -10024,7 +10029,7 @@ react-native-wheely@^0.6.0:
   resolved "https://registry.npmjs.org/react-native-wheely/-/react-native-wheely-0.6.0.tgz#c977dfc98b5111818a37e6fd4ad9541e9afb50b8"
   integrity sha512-WDnynKOdHZ3m0VnXF5pC11dXSJZDC/6/e9LuZ6UKs4IjIRI1NTTd14pRwKYEnTgWmJdlDjqJvNSIVbd7EuMxHQ==
 
-react-native@0.74.3:
+react-native@^0.74.3:
   version "0.74.3"
   resolved "https://registry.npmjs.org/react-native/-/react-native-0.74.3.tgz#eef32cd10afb1f4b26f75b79eefd6b220c63953c"
   integrity sha512-UFutCC6WEw6HkxlcpQ2BemKqi0JkwrgDchYB5Svi8Sp4Xwt4HA6LGEjNQgZ+3KM44bjyFRpofQym0uh0jACGng==

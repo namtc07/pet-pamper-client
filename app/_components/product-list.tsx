@@ -1,13 +1,8 @@
-import React, { useState } from 'react';
-import { Ionicons } from '@expo/vector-icons';
-import {
-  View,
-  StyleSheet,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-} from 'react-native';
 import ProductCard from '@/app/_components/product-card';
 import Text from '@/components/TextCustom';
+import { Ionicons } from '@expo/vector-icons';
+import React, { useState } from 'react';
+import { StyleSheet, View } from 'react-native';
 import {
   Easing,
   useAnimatedStyle,
@@ -26,7 +21,7 @@ const ProductList: React.FC<ProductListProps> = ({ sourceList = [] }) => {
   const height = useSharedValue<any>(286);
 
   const config = {
-    duration: 500,
+    duration: 150,
     easing: Easing.bezier(0.5, 0.01, 0, 1),
   };
 
