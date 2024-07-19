@@ -1,0 +1,50 @@
+name: Lint
+
+on:
+  pull_request:
+    types: [opened, synchronize, edited, reopened]
+    branches:
+      - main
+      - develop
+      - task/**
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cleanup build folder
+        run: |
+          ls -la ./
+          echo ${{ secrets.USERPWD }} | sudo -S rm -rf ./* || true
+          echo ${{ secrets.USERPWD }} | sudo -S rm -rf ./.??* || true
+          ls -la ./
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18.16.0"
+
+      - name: Run yarn 1
+        id: run_yarn_1
+        uses: borales/actions-yarn@v4
+        continue-on-error: true
+        with:
+          cmd: install
+
+      - name: Run ESLint on changed files
+        id: eslint
+        run: npx eslint --no-error-on-unmatched-pattern $(git diff --diff-filter=d --name-only origin/${{ github.event.pull_request.base.ref }}... -- . ":(exclude)**/test-coverage*" | grep -E '\.(js|jsx)$' | xargs || echo "")
+
+      - name: Create comment if there are errors
+        if: failure()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'Lint error!'
+            })

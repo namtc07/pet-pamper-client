@@ -1,0 +1,85 @@
+name: Test coverage
+
+on:
+  pull_request:
+    types: [opened, synchronize, edited, reopened]
+    branches:
+      - main
+      - develop
+      - task/**
+  push:
+    branches:
+      - main
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cleanup build folder
+        run: |
+          ls -la ./
+          echo ${{ secrets.USERPWD }} | sudo -S rm -rf ./* || true
+          echo ${{ secrets.USERPWD }} | sudo -S rm -rf ./.??* || true
+          ls -la ./
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18.16.0"
+
+      - name: Run yarn 1
+        id: run_yarn_1
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: install
+        continue-on-error: true
+
+      - name: Run jest coverage
+        id: jest
+        run: CI=true yarn test --coverage --coverageReporters=json-summary || true
+
+      - name: Jest Coverage Comment
+        id: coverageComment
+        uses: MishaKav/jest-coverage-comment@main
+        with:
+          hide-comment: false
+          coverage-summary-path: ./apps/fulfillment/coverage/coverage-summary.json # only check coverage for fulfillment app first
+
+      - name: Check the output coverage
+        run: |
+          echo "Coverage Percentage - ${{ steps.coverageComment.outputs.coverage }}"
+          echo "Coverage Color - ${{ steps.coverageComment.outputs.color }}"
+          echo "Summary HTML - ${{ steps.coverageComment.outputs.summaryHtml }}"
+          echo "${{ steps.coverageComment.outputs.tests }}"
+          echo "${{ steps.coverageComment.outputs.skipped }}"
+          echo "${{ steps.coverageComment.outputs.failures }}"
+          echo "${{ steps.coverageComment.outputs.errors }}"
+          echo "${{ steps.coverageComment.outputs.time }}"
+          echo "${{ steps.coverageComment.outputs.lines }}"
+          echo "${{ steps.coverageComment.outputs.branches }}"
+          echo "${{ steps.coverageComment.outputs.functions }}"
+          echo "${{ steps.coverageComment.outputs.statements }}"
+          echo "${{ steps.coverageComment.outputs.coverageHtml }}"
+
+      - name: Debug JSON Output
+        run: |
+          echo '{
+            "label": "Coverage",
+            "message": "${{ steps.coverageComment.outputs.coverage }}%",
+            "color": "${{ steps.coverageComment.outputs.color }}",
+            "namedLogo": "javascript"
+          }' > badge_output.json
+          cat badge_output.json
+
+      - name: Create the badge
+        uses: schneegans/dynamic-badges-action@v1.7.0 # Cập nhật phiên bản
+        with:
+          auth: ${{ secrets.GIST_SECRET }}
+          gistID: cd5918bdaba99e0df6b4d2305b605032
+          filename: fulfillment-fe.json
+          label: Coverage
+          message: ${{ steps.coverageComment.outputs.coverage }}%
+          color: ${{ steps.coverageComment.outputs.color }}
+          namedLogo: javascript

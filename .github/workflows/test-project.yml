@@ -1,0 +1,47 @@
+name: Test project
+
+on:
+  pull_request:
+    types: [opened, synchronize, edited, reopened]
+    branches:
+      - main
+      - develop
+      - task/**
+  push:
+    branches:
+      - main
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cleanup build folder
+        run: |
+          ls -la ./
+          echo ${{ secrets.USERPWD }} | sudo -S rm -rf ./* || true
+          echo ${{ secrets.USERPWD }} | sudo -S rm -rf ./.??* || true
+          ls -la ./
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18.16.0"
+
+      - name: Run config yarn
+        id: run_yarn_config
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: config set network-timeout 900000
+
+      - name: Run yarn 1
+        id: run_yarn_1
+        uses: borales/actions-yarn@v4
+        continue-on-error: true
+        with:
+          cmd: install
+
+      - name: Run test
+        id: jest
+        run: CI=true yarn test
