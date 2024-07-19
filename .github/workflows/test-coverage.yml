@@ -13,7 +13,7 @@ jobs:
         uses: schneegans/dynamic-badges-action@v1.7.0
         with:
           auth: ${{ secrets.GIST_SECRET }}
-          gistID: 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
+          gistID: 73c0b222b9b2eff3b575b2107622f479
           filename: pet-pamper-client.json
           label: Coverage
           message: 80%
