@@ -8,7 +8,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import { LoginManager } from 'react-native-fbsdk-next';
+// import { LoginManager } from 'react-native-fbsdk-next';
 import { router } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AuthContext } from '@/context/AuthContext';
@@ -44,11 +44,11 @@ const AccountScreen: React.FC = () => {
 
   const handleFacebookLogout = async () => {
     await AsyncStorage.removeItem('auth');
-    LoginManager.logOut();
-    setAuth({
-      token: '',
-      phone: '',
-    }); // Clear auth context
+    // LoginManager.logOut();
+    // setAuth({
+    //   token: '',
+    //   phone: '',
+    // }); // Clear auth context
     router.navigate('/');
   };
 

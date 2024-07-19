@@ -47,19 +47,19 @@
     "plugins": [
       "expo-router",
       "expo-font",
-      [
-        "react-native-fbsdk-next",
-        {
-          "appID": "2493896137478522",
-          "clientToken": "817e235eaf4b0adff17a78dbb4b28907",
-          "displayName": "Pet Pamper",
-          "scheme": "fb2493896137478522",
-          "advertiserIDCollectionEnabled": false,
-          "autoLogAppEventsEnabled": false,
-          "isAutoInitEnabled": true,
-          "iosUserTrackingPermission": "This identifier will be used to deliver personalized ads to you."
-        }
-      ],
+      // [
+      //   "react-native-fbsdk-next",
+      //   {
+      //     "appID": "2493896137478522",
+      //     "clientToken": "817e235eaf4b0adff17a78dbb4b28907",
+      //     "displayName": "Pet Pamper",
+      //     "scheme": "fb2493896137478522",
+      //     "advertiserIDCollectionEnabled": false,
+      //     "autoLogAppEventsEnabled": false,
+      //     "isAutoInitEnabled": true,
+      //     "iosUserTrackingPermission": "This identifier will be used to deliver personalized ads to you."
+      //   }
+      // ],
       "expo-tracking-transparency"
     ],
     "experiments": {
