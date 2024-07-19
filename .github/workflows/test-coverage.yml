@@ -34,18 +34,17 @@ jobs:
         uses: borales/actions-yarn@v4
         with:
           cmd: install
-        continue-on-error: true
 
       - name: Run jest coverage
         id: jest
-        run: CI=true yarn test --coverage --coverageReporters=json-summary || true
+        run: CI=true yarn test --coverage --coverageReporters=json-summary
 
       - name: Jest Coverage Comment
         id: coverageComment
         uses: MishaKav/jest-coverage-comment@main
         with:
           hide-comment: false
-          coverage-summary-path: ./coverage/coverage-summary.json # only check coverage for fulfillment app first
+          coverage-summary-path: ./coverage/coverage-summary.json
 
       - name: Check the output coverage
         run: |
@@ -80,6 +79,6 @@ jobs:
           gistID: 73c0b222b9b2eff3b575b2107622f479
           filename: pet-pamper-client.json
           label: Coverage
-          message: 80%
-          color: brightgreen
+          message: ${{ steps.coverageComment.outputs.coverage }}
+          color: ${{ steps.coverageComment.outputs.color }}
           namedLogo: javascript
