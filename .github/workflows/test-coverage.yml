@@ -29,16 +29,12 @@ jobs:
         with:
           node-version: "18.20.3"
 
-      - name: Run yarn 1
-        id: run_yarn_1
-        uses: borales/actions-yarn@v4
-        with:
-          cmd: install
-        continue-on-error: true
+      - name: Install dependencies
+        run: yarn install
 
       - name: Run jest coverage
         id: jest
-        run: CI=true yarn test --coverage --coverageReporters=json-summary || true
+        run: CI=true yarn test --ci --coverage --coverageReporters=json-summary || true
 
       - name: Jest Coverage Comment
         id: coverageComment
@@ -74,11 +70,11 @@ jobs:
           cat badge_output.json
 
       - name: Create the badge
-        uses: schneegans/dynamic-badges-action@v1.7.0 # Cập nhật phiên bản
+        uses: schneegans/dynamic-badges-action@v1.7.0
         with:
           auth: ${{ secrets.GIST_SECRET }}
           gistID: cd5918bdaba99e0df6b4d2305b605032
-          filename: fulfillment-fe.json
+          filename: pet-pamper-client.json
           label: Coverage
           message: ${{ steps.coverageComment.outputs.coverage }}%
           color: ${{ steps.coverageComment.outputs.color }}
