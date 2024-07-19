@@ -37,7 +37,10 @@ jobs:
 
       - name: Run jest coverage
         id: jest
-        run: CI=true yarn test --CI --coverageReporters=json-summary
+        run: CI=true yarn test --coverage --coverageReporters=json-summary
+
+      - name: Check coverage summary file
+        run: ls -la ./coverage
 
       - name: Jest Coverage Comment
         id: coverageComment
