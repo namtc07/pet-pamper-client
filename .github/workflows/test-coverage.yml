@@ -35,6 +35,10 @@ jobs:
         with:
           cmd: install
 
+      - name: Run jest coverage
+        id: jest
+        run: CI=true yarn test --CI --coverageReporters=json-summary
+
       - name: Jest Coverage Comment
         id: coverageComment
         uses: MishaKav/jest-coverage-comment@main
