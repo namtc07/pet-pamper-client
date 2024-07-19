@@ -27,7 +27,7 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: "18.16.0"
+          node-version: "18.20.3"
 
       - name: Run yarn 1
         id: run_yarn_1
