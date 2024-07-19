@@ -45,7 +45,7 @@ jobs:
         uses: MishaKav/jest-coverage-comment@main
         with:
           hide-comment: false
-          coverage-summary-path: ./apps/fulfillment/coverage/coverage-summary.json # only check coverage for fulfillment app first
+          coverage-summary-path: ./coverage/coverage-summary.json # only check coverage for fulfillment app first
 
       - name: Check the output coverage
         run: |
