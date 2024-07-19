@@ -48,6 +48,8 @@ jobs:
         with:
           hide-comment: false
           coverage-summary-path: ./coverage/coverage-summary.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Check the output coverage
         run: |
