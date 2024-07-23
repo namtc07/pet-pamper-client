@@ -35,10 +35,10 @@ const LoaderCustom: React.FC<LoaderCustomProps> = ({ isLoading, visible }) => {
 
 const styles = StyleSheet.create({
   modalBackground: {
-    flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.4)',
-    justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    flex: 1,
+    justifyContent: 'center',
   },
 });
 

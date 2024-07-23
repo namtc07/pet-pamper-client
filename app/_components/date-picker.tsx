@@ -11,12 +11,16 @@ interface Range {
 }
 
 const styles = StyleSheet.create({
+  calendarTextStyle: {
+    color: '#5A2828',
+    fontFamily: 'ExoBold',
+  },
   container: {
-    flex: 1,
-    paddingBottom: 6,
-    marginBottom: 30,
-    borderRadius: 12,
     backgroundColor: 'white',
+    borderRadius: 12,
+    flex: 1,
+    marginBottom: 30,
+    paddingBottom: 6,
     ...Platform.select({
       ios: {
         shadowColor: '#000',
@@ -28,19 +32,15 @@ const styles = StyleSheet.create({
       },
     }),
   },
-  calendarTextStyle: {
-    color: '#5A2828',
-    fontFamily: 'ExoBold',
+  schedule: {
+    alignSelf: 'center',
+    bottom: -20,
+    justifyContent: 'center',
+    position: 'absolute',
   },
   selectedTextStyle: {
     color: '#fff',
     fontFamily: 'bold',
-  },
-  schedule: {
-    position: 'absolute',
-    bottom: -20,
-    justifyContent: 'center',
-    alignSelf: 'center',
   },
   weekDaysTextStyle: {
     color: '#5A2828',

@@ -91,7 +91,7 @@ const Login: React.FC<LoginProps> = () => {
               <Text style={styles.title} children="Log in" />
             </View>
             <View>
-              <View style={[styles.emailContainer]}>
+              <View style={styles.emailContainer}>
                 <TextInput
                   style={[
                     styles.input,
@@ -118,7 +118,7 @@ const Login: React.FC<LoginProps> = () => {
               </View>
               <View style={styles.passwordContainer}>
                 <TextInput
-                  style={[styles.input]}
+                  style={styles.input}
                   placeholder="Password"
                   secureTextEntry={!passwordVisible}
                   placeholderTextColor="#979797"
@@ -159,10 +159,7 @@ const Login: React.FC<LoginProps> = () => {
               ]}
             >
               <Text
-                style={[
-                  // styles.textLogin,
-                  { color: buttonDisabled ? '#979797' : 'white' },
-                ]}
+                style={{ color: buttonDisabled ? '#979797' : 'white' }}
                 children="Log in"
               />
             </PlatformTouchable>

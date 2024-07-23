@@ -1,4 +1,3 @@
-import { AuthProvider } from '@/context/AuthContext';
 import {
   DarkTheme,
   DefaultTheme,
@@ -13,6 +12,7 @@ import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import React, { useEffect } from 'react';
 import { ApolloProvider } from 'react-apollo';
+import { AuthProvider } from '@/context/AuthContext';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/useColorScheme';

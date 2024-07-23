@@ -1,7 +1,3 @@
-import DatePicker from '@/app/_components/date-picker';
-import MenuTabBlock from '@/app/_components/menu-tab-block';
-import ProductList from '@/app/_components/product-list';
-import Svgs from '@/assets/svgs';
 import React, { useCallback, useRef, useState } from 'react';
 import {
   Animated,
@@ -15,9 +11,13 @@ import {
 } from 'react-native';
 import Carousel from 'react-native-reanimated-carousel';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { StatusBarStyle } from 'expo-status-bar';
+import DatePicker from '@/app/_components/date-picker';
+import MenuTabBlock from '@/app/_components/menu-tab-block';
+import ProductList from '@/app/_components/product-list';
+import Svgs from '@/assets/svgs';
 import Badge from '@/app/_components/Badge';
 import StatusbarCustom from '@/components/StatusbarCustom';
-import { StatusBarStyle } from 'expo-status-bar';
 import { banners, styles } from './styles';
 
 export const createBackgroundColorInterpolation = (scrollY: any) =>
@@ -132,7 +132,7 @@ const HomeScreen: React.FC = () => {
             placeholderTextColor="#999"
           />
           <View style={styles.searchIconGroup}>
-            <TouchableOpacity style={[styles.icon]}>
+            <TouchableOpacity style={styles.icon}>
               <Icon name="cart-outline" size={22} color={iconColor} />
               <Badge count={99} style={{ top: -10, right: -10 }} />
             </TouchableOpacity>
@@ -198,7 +198,7 @@ const HomeScreen: React.FC = () => {
             <MenuTabBlock mode="multi" source={menuTabs} />
           </View>
         </View>
-        <View style={[styles.content]}>
+        <View style={styles.content}>
           <View>
             <DatePicker />
           </View>

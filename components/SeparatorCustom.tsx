@@ -4,26 +4,26 @@ import Text from './TextCustom';
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
     alignItems: 'center',
-  },
-  wrapper: {
-    flex: 1,
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   separator: {
     flex: 1,
   },
-  textStart: {
-    paddingRight: 12,
+  textEnd: {
+    paddingLeft: 12,
   },
   textMiddle: {
     paddingHorizontal: 12,
   },
-  textEnd: {
-    paddingLeft: 12,
+  textStart: {
+    paddingRight: 12,
+  },
+  wrapper: {
+    alignItems: 'center',
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
 });
 

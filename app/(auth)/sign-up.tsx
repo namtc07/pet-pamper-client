@@ -89,7 +89,7 @@ const Signup: React.FC<SignupProps> = () => {
               <Text style={styles.title} children="Sign up" />
             </View>
             <View>
-              <View style={[styles.emailContainer]}>
+              <View style={styles.emailContainer}>
                 <TextInput
                   style={[
                     styles.input,
@@ -116,7 +116,7 @@ const Signup: React.FC<SignupProps> = () => {
               </View>
               <View style={styles.passwordContainer}>
                 <TextInput
-                  style={[styles.input]}
+                  style={styles.input}
                   placeholder="Password"
                   secureTextEntry={!passwordVisible}
                   placeholderTextColor="#979797"

@@ -12,10 +12,10 @@ import StatusbarCustom from '@/components/StatusbarCustom';
 import Text from '@/components/TextCustom';
 import PlatformTouchable from '@/components/PlatformTouchable';
 
-const App = () => {
+function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <StatusbarCustom color={'dark'} />
+      <StatusbarCustom color="dark" />
       <View style={styles.header}>
         <Text style={styles.title} children="Pet pamper" />
         <Text style={styles.subtitle} children="Taking care of your pet" />
@@ -43,61 +43,61 @@ const App = () => {
       </View>
     </SafeAreaView>
   );
-};
+}
 
 export default App;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     alignItems: 'center',
-    textAlign: 'center',
-    display: 'flex',
-    gap: 24,
     backgroundColor: 'white',
+    display: 'flex',
+    flex: 1,
+    gap: 24,
     justifyContent: 'center',
+    textAlign: 'center',
+  },
+  footer: {
+    display: 'flex',
+    gap: 18,
+    width: 342,
   },
   header: {
     // paddingTop: 57,
   },
-  title: {
-    fontSize: 36,
-    color: '#5A2828',
-    textTransform: 'uppercase',
-    lineHeight: 54,
+  img: {
+    height: 343,
+    width: 343,
   },
-  subtitle: {
-    fontSize: 18,
-    color: '#FF8D4D',
-    textAlign: 'center',
-    lineHeight: 27,
-    paddingBottom: 30,
+  logIn: {
+    backgroundColor: 'orange',
   },
   middle: {
     alignItems: 'center',
-  },
-  img: {
-    width: 343,
-    height: 343,
-  },
-  footer: {
-    width: 342,
-    display: 'flex',
-    gap: 18,
   },
   signUp: {
     backgroundColor: 'white',
     shadowColor: '#000',
   },
-  textSignUp: {
+  subtitle: {
     color: '#FF8D4D',
-    fontFamily: 'Exo-Bold',
-  },
-  logIn: {
-    backgroundColor: 'orange',
+    fontSize: 18,
+    lineHeight: 27,
+    paddingBottom: 30,
+    textAlign: 'center',
   },
   textLogIn: {
     color: 'white',
     fontFamily: 'Exo-Bold',
+  },
+  textSignUp: {
+    color: '#FF8D4D',
+    fontFamily: 'Exo-Bold',
+  },
+  title: {
+    color: '#5A2828',
+    fontSize: 36,
+    lineHeight: 54,
+    textTransform: 'uppercase',
   },
 });

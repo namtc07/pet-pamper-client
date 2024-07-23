@@ -7,14 +7,14 @@ import {
 } from 'react-native';
 
 const styles = StyleSheet.create({
-  container: {
-    fontFamily: 'Exo-Regular',
-  },
   black: {
     fontFamily: 'Exo-Black',
   },
   bold: {
     fontFamily: 'Exo-Bold',
+  },
+  container: {
+    fontFamily: 'Exo-Regular',
   },
   extraBold: {
     fontFamily: 'Exo-ExtraBold',

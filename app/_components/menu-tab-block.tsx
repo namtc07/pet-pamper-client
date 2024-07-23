@@ -1,6 +1,6 @@
-import Text from '@/components/TextCustom';
 import React from 'react';
 import { Platform, Pressable, StyleSheet, View } from 'react-native';
+import Text from '@/components/TextCustom';
 
 interface Tab {
   icon: React.ReactNode;
@@ -53,28 +53,32 @@ export default MenuTabBlock;
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    position: 'relative',
     justifyContent: 'space-between',
-    width: '100%',
     paddingHorizontal: 20,
+    position: 'relative',
+    width: '100%',
     ...Platform.select({
       ios: {},
       android: {},
     }),
   },
+  iconContainer: {
+    height: 24,
+    width: 24,
+  },
   tabContainer: {
+    alignItems: 'center',
     borderRadius: 12,
     height: 40,
-    alignItems: 'center',
     justifyContent: 'center',
   },
   tabContent: {
-    flexDirection: 'row',
     alignItems: 'center',
-    borderRadius: 12,
-    paddingHorizontal: 12,
-    height: 40,
     backgroundColor: 'white',
+    borderRadius: 12,
+    flexDirection: 'row',
+    height: 40,
+    paddingHorizontal: 12,
     ...Platform.select({
       ios: {
         shadowColor: '#000',
@@ -85,10 +89,6 @@ const styles = StyleSheet.create({
         elevation: 5,
       },
     }),
-  },
-  iconContainer: {
-    width: 24,
-    height: 24,
   },
   title: {
     color: '#FF8D4D',

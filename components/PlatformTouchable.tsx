@@ -18,6 +18,11 @@ const commonStyles = StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'row',
   } as ViewStyle,
+  icon: {
+    marginLeft: 12,
+    width: 24,
+    height: 24,
+  } as ViewStyle,
   shadow: {
     ...Platform.select({
       ios: {
@@ -31,20 +36,15 @@ const commonStyles = StyleSheet.create({
       },
     }),
   } as ViewStyle,
-  textContainer: {
-    flex: 1,
-    justifyContent: 'center',
-  } as ViewStyle,
   text: {
     fontSize: 18,
     fontWeight: '700',
     lineHeight: 27,
     textAlign: 'center',
   } as TextStyle,
-  icon: {
-    marginLeft: 12,
-    width: 24,
-    height: 24,
+  textContainer: {
+    flex: 1,
+    justifyContent: 'center',
   } as ViewStyle,
 });
 

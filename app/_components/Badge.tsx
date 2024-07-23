@@ -1,7 +1,7 @@
 // src/components/Badge.tsx
 import React from 'react';
-import Text from '@/components/TextCustom';
 import { View, StyleSheet } from 'react-native';
+import Text from '@/components/TextCustom';
 
 interface BadgeProps {
   count: number;
@@ -22,15 +22,15 @@ const Badge: React.FC<BadgeProps> = ({ count, style }) => {
 
 const styles = StyleSheet.create({
   container: {
-    position: 'absolute',
+    alignItems: 'center',
     backgroundColor: '#FF8D4D',
+    borderColor: 'white',
     borderRadius: 10,
-    width: 20,
+    borderWidth: 0.5,
     height: 20,
     justifyContent: 'center',
-    alignItems: 'center',
-    borderColor: 'white',
-    borderWidth: 0.5,
+    position: 'absolute',
+    width: 20,
   },
   text: {
     color: '#fff',

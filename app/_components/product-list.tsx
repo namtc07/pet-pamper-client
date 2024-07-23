@@ -1,5 +1,3 @@
-import ProductCard from '@/app/_components/product-card';
-import Text from '@/components/TextCustom';
 import { Ionicons } from '@expo/vector-icons';
 import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
@@ -9,6 +7,8 @@ import {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
+import Text from '@/components/TextCustom';
+import ProductCard from '@/app/_components/product-card';
 
 interface ProductListProps {
   sourceList?: any[];
@@ -25,12 +25,10 @@ const ProductList: React.FC<ProductListProps> = ({ sourceList = [] }) => {
     easing: Easing.bezier(0.5, 0.01, 0, 1),
   };
 
-  const style = useAnimatedStyle(() => {
-    return {
-      width: withTiming(width.value, config),
-      height: withTiming(height.value, config),
-    };
-  });
+  const style = useAnimatedStyle(() => ({
+    width: withTiming(width.value, config),
+    height: withTiming(height.value, config),
+  }));
 
   const handleSwitchGrid = () => {
     setMode(!mode);
@@ -78,8 +76,8 @@ const styles = StyleSheet.create({
   productContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'space-between',
     gap: 12,
+    justifyContent: 'space-between',
   },
 });
 
