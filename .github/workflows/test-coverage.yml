@@ -18,9 +18,10 @@ jobs:
       - name: Cleanup build folder
         run: |
           ls -la ./
-          echo ${{ secrets.USERPWD }} | sudo -S rm -rf ./* || true
-          echo ${{ secrets.USERPWD }} | sudo -S rm -rf ./.??* || true
+          sudo rm -rf ./* || true
+          sudo rm -rf ./.??* || true
           ls -la ./
+
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -29,52 +30,42 @@ jobs:
         with:
           node-version: "18.20.3"
 
-      - name: Run yarn 1
-        id: run_yarn_1
-        uses: borales/actions-yarn@v4
-        with:
-          cmd: install
+      - name: Install dependencies
+        run: yarn install
 
       - name: Run jest coverage
         id: jest
         run: CI=true yarn test --coverage --coverageReporters=json-summary
 
-      - name: Check coverage summary file
-        run: ls -la ./coverage
-
-      - name: Check the output coverage
+      - name: Generate coverage summary
+        id: coverage_summary
         run: |
-          echo "Coverage Percentage - ${{ steps.coverageComment.outputs.coverage }}"
-          echo "Coverage Color - ${{ steps.coverageComment.outputs.color }}"
-          echo "Summary HTML - ${{ steps.coverageComment.outputs.summaryHtml }}"
-          echo "${{ steps.coverageComment.outputs.tests }}"
-          echo "${{ steps.coverageComment.outputs.skipped }}"
-          echo "${{ steps.coverageComment.outputs.failures }}"
-          echo "${{ steps.coverageComment.outputs.errors }}"
-          echo "${{ steps.coverageComment.outputs.time }}"
-          echo "${{ steps.coverageComment.outputs.lines }}"
-          echo "${{ steps.coverageComment.outputs.branches }}"
-          echo "${{ steps.coverageComment.outputs.functions }}"
-          echo "${{ steps.coverageComment.outputs.statements }}"
-          echo "${{ steps.coverageComment.outputs.coverageHtml }}"
+          COVERAGE=$(jq -r '.total.lines.pct' coverage/coverage-summary.json)
+          echo "coverage=$COVERAGE" >> $GITHUB_OUTPUT
+          if (( $(echo "$COVERAGE >= 90" | bc -l) )); then
+            echo "color=brightgreen" >> $GITHUB_OUTPUT
+          elif (( $(echo "$COVERAGE >= 80" | bc -l) )); then
+            echo "color=green" >> $GITHUB_OUTPUT
+          elif (( $(echo "$COVERAGE >= 70" | bc -l) )); then
+            echo "color=yellowgreen" >> $GITHUB_OUTPUT
+          elif (( $(echo "$COVERAGE >= 60" | bc -l) )); then
+            echo "color=yellow" >> $GITHUB_OUTPUT
+          else
+            echo "color=red" >> $GITHUB_OUTPUT
+          fi
 
-      - name: Debug JSON Output
+      - name: Debug Coverage Output
         run: |
-          echo '{
-            "label": "Coverage",
-            "message": "${{ steps.coverageComment.outputs.coverage }}%",
-            "color": "${{ steps.coverageComment.outputs.color }}",
-            "namedLogo": "javascript"
-          }' > badge_output.json
-          cat badge_output.json
+          echo "Coverage: ${{ steps.coverage_summary.outputs.coverage }}"
+          echo "Color: ${{ steps.coverage_summary.outputs.color }}"
 
-      - name: Create a simple badge
+      - name: Create coverage badge
         uses: schneegans/dynamic-badges-action@v1.7.0
         with:
           auth: ${{ secrets.GIST_SECRET }}
           gistID: c2e9f577c2e450b31f425bdd0dde2759
           filename: pet-pamper-client-coverage.json
           label: Coverage
-          message: ${{ steps.coverageComment.outputs.coverage }}
-          color: ${{ steps.coverageComment.outputs.color }}
-          namedLogo: javascript
+          message: ${{ steps.coverage_summary.outputs.coverage }}%
+          color: ${{ steps.coverage_summary.outputs.color }}
+          namedLogo: jest
