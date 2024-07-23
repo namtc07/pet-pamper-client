@@ -42,7 +42,6 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
     'no-console': 'off',
-    'no-undef': 'error',
     'react/destructuring-assignment': 'off',
     'react/jsx-no-constructed-context-values': 'off',
     'react/no-unstable-nested-components': 'off',
