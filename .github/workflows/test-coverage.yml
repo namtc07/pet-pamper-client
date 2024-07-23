@@ -42,15 +42,6 @@ jobs:
       - name: Check coverage summary file
         run: ls -la ./coverage
 
-      - name: Jest Coverage Comment
-        id: coverageComment
-        uses: MishaKav/jest-coverage-comment@main
-        with:
-          hide-comment: false
-          coverage-summary-path: ./coverage/coverage-summary.json
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Check the output coverage
         run: |
           echo "Coverage Percentage - ${{ steps.coverageComment.outputs.coverage }}"
