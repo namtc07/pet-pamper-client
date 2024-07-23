@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import { router, useRouter } from 'expo-router';
+import { ExpoRouter } from 'expo-router/types/expo-router';
 
 interface AuthData {
   token: string;
