@@ -48,3 +48,17 @@ jobs:
 
       - name: Run Tests
         run: yarn test
+
+      - name: Update README with Lint Badge
+        run: |
+          BADGE="![Lint](https://github.com/namtc07/pet-pamper-client/actions/workflows/lint.yml/badge.svg?branch=main)"
+          sed -i "s|!\[Lint\](https://github.com/namtc07/pet-pamper-client/actions/workflows/lint.yml/badge.svg?branch=main)|$BADGE|g" README.md
+
+      - name: Commit changes
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add README.md
+          git commit -m "Update Lint badge status in README"
+          git push
