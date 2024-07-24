@@ -11,6 +11,7 @@ npm-debug.*
 web-build/
 android/
 ios/
+storybook-static/
 
 # macOS
 .DS_Store

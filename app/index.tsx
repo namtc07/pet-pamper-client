@@ -11,6 +11,9 @@ import Images from '@/assets/images';
 import StatusbarCustom from '@/components/StatusbarCustom';
 import Text from '@/components/TextCustom';
 import PlatformTouchable from '@/components/PlatformTouchable';
+import { MyButton } from '@/src/components/Button';
+
+const storybookEnabled = process.env.EXPO_PUBLIC_STORYBOOK_ENABLED === 'true';
 
 function App() {
   return (
@@ -40,6 +43,7 @@ function App() {
         >
           <Text style={styles.textLogIn} children="Log in" />
         </PlatformTouchable>
+        <MyButton text="hehe" />
       </View>
     </SafeAreaView>
   );
