@@ -76,5 +76,5 @@ module.exports = {
     'no-undef': 'off',
     'react/jsx-no-bind': 'off',
   },
-  ignorePatterns: ['node_modules/**'],
+  ignorePatterns: ['/node_modules'],
 };
