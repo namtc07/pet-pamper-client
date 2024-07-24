@@ -19,15 +19,15 @@ import {
   validateEmail,
 } from '@/app/_utils/authHelpers';
 
-import { styles } from './styles';
 import Svgs from '@/assets/svgs';
-import FacebookLogin from '../_components/FacebookLogin';
 import { AuthContext } from '@/context/AuthContext';
 import StatusbarCustom from '@/components/StatusbarCustom';
 import Text from '@/components/TextCustom';
 import PlatformTouchable from '@/components/PlatformTouchable';
 import SeparatorCustom from '@/components/SeparatorCustom';
 import LoaderCustom from '@/components/LoaderCustom';
+import FacebookLogin from '../_components/FacebookLogin';
+import { styles } from './styles';
 
 interface LoginProps {}
 
