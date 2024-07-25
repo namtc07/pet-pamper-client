@@ -1,0 +1,28 @@
+$ storybook build --config-dir .storybook/web --output-dir /tmp/chromatic--1704034-BZBYr2lLv2Dr
+storybook v8.2.6
+
+info => Cleaning outputDir: ../../../../../../tmp/chromatic--1704034-BZBYr2lLv2Dr
+info => Loading presets
+info => Building manager..
+info => Manager built (192 ms)
+info => Building preview..
+WARN No story files found for the specified pattern: .storybook/stories/**/*.stories.mdx
+info Addon-docs: using MDX3
+info => Using implicit CSS loaders
+Using @react-native/babel-preset
+info => Using default Webpack5 setup
+info Using tsconfig paths for react-docgen
+WARN asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
+WARN This can impact web performance.
+WARN Assets: 
+WARN   896.25a4f3d1.iframe.bundle.js (1010 KiB)
+WARN   282.e972104a.iframe.bundle.js (591 KiB)
+WARN entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (244 KiB). This can impact web performance.
+WARN Entrypoints:
+WARN   main (602 KiB)
+WARN       runtime~main.6596edab.iframe.bundle.js
+WARN       282.e972104a.iframe.bundle.js
+WARN       main.82cd2e90.iframe.bundle.js
+WARN 
+info => Preview built (13 s)
+info => Output directory: /tmp/chromatic--1704034-BZBYr2lLv2Dr
