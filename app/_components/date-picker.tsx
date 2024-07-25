@@ -1,29 +1,24 @@
+import React, { useState } from 'react';
 import dayjs from 'dayjs';
-import { useState } from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
-import DateTimePicker from 'react-native-ui-datepicker';
+import DateTimePicker, { DateType } from 'react-native-ui-datepicker';
 import Svgs from '@/assets/svgs';
 import MenuTabBlock from './menu-tab-block';
 
-interface Range {
-  startDate?: Date;
-  endDate?: Date;
-}
-
 const styles = StyleSheet.create({
   calendarTextStyle: {
-    color: '#5A2828',
+    // color: '#5A2828',
     fontFamily: 'ExoBold',
   },
   container: {
-    backgroundColor: 'white',
+    // backgroundColor: 'white',
     borderRadius: 12,
     flex: 1,
     marginBottom: 30,
     paddingBottom: 6,
     ...Platform.select({
       ios: {
-        shadowColor: '#000',
+        // shadowColor: '#000',
         shadowOffset: { width: 0, height: 0 },
         shadowOpacity: 0.1,
       },
@@ -39,13 +34,18 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   selectedTextStyle: {
-    color: '#fff',
+    // color: '#fff',
     fontFamily: 'bold',
   },
   weekDaysTextStyle: {
-    color: '#5A2828',
+    // color: '#5A2828',
   },
 });
+
+interface Range {
+  startDate?: DateType;
+  endDate?: DateType;
+}
 
 function DatePicker() {
   const [range, setRange] = useState<Range>({
@@ -53,7 +53,7 @@ function DatePicker() {
     endDate: undefined,
   });
 
-  const handleDateChange = (params: any) => {
+  const handleDateChange = (params: Range) => {
     setRange({
       startDate: params?.startDate,
       endDate: params?.endDate,
@@ -69,15 +69,19 @@ function DatePicker() {
         startDate={range.startDate}
         endDate={range.endDate}
         onChange={handleDateChange}
-        calendarTextStyle={styles.calendarTextStyle as any}
-        selectedTextStyle={styles.selectedTextStyle as any}
+        calendarTextStyle={styles.calendarTextStyle}
+        selectedTextStyle={styles.selectedTextStyle}
         minDate={yesterday}
         selectedItemColor="#FFBA69"
         firstDayOfWeek={1}
-        weekDaysTextStyle={styles.weekDaysTextStyle as any}
+        weekDaysTextStyle={styles.weekDaysTextStyle}
       />
       <View style={styles.schedule}>
-        <MenuTabBlock title="Schedule" icon={<Svgs.IconClock />} />
+        <MenuTabBlock
+          title="Schedule"
+          icon={<Svgs.IconClock />}
+          onPress={() => console.log('onPress')}
+        />
       </View>
     </View>
   );

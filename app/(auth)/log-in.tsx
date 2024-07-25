@@ -1,5 +1,3 @@
-// pages/Login.tsx
-
 import {
   checkButtonState,
   loadStoredData,
@@ -31,7 +29,7 @@ import { styles } from './styles';
 
 interface LoginProps {}
 
-const Login: React.FC<LoginProps> = () => {
+function Login() {
   const [loading, setLoading] = useState<boolean>(false);
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
   const [email, setEmail] = useState<string>('');
@@ -205,6 +203,6 @@ const Login: React.FC<LoginProps> = () => {
       {loading && <LoaderCustom visible={loading} isLoading={loading} />}
     </SafeAreaView>
   );
-};
+}
 
 export default Login;

@@ -12,7 +12,6 @@ import {
 } from 'react-native';
 
 import {
-  // checkButtonState,
   loadStoredData,
   saveDataToStorage,
   validateEmail,
@@ -27,9 +26,7 @@ import { AuthContext } from '@/context/AuthContext';
 import FacebookLogin from '../_components/FacebookLogin';
 import { styles } from './styles';
 
-interface SignupProps {}
-
-const Signup: React.FC<SignupProps> = () => {
+function Signup() {
   const [loading, setLoading] = useState(false);
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [email, setEmail] = useState('');
@@ -170,9 +167,7 @@ const Signup: React.FC<SignupProps> = () => {
               hasShadow
               children={<Text style={styles.textGoogle} children="Google" />}
               icon={<Svgs.IconGoogle />}
-              onPress={function (): void {
-                throw new Error('Function not implemented.');
-              }}
+              onPress={() => console.log('onPress')}
             />
             <FacebookLogin onLoading={setLoading} />
           </View>
@@ -200,6 +195,6 @@ const Signup: React.FC<SignupProps> = () => {
       {loading && <LoaderCustom visible={loading} isLoading={loading} />}
     </SafeAreaView>
   );
-};
+}
 
 export default Signup;

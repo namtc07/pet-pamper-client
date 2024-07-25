@@ -51,12 +51,12 @@ interface CustomTextProps extends TextProps {
   style?: TextStyle | TextStyle[];
 }
 
-const Text: React.FC<CustomTextProps> = ({
+function Text({
   style,
   children,
   lines,
   fontWeight = 'regular',
-}) => {
+}: CustomTextProps) {
   let fontStyle = styles.container;
 
   switch (fontWeight) {
@@ -98,5 +98,5 @@ const Text: React.FC<CustomTextProps> = ({
       {children}
     </TextNative>
   );
-};
+}
 export default Text;

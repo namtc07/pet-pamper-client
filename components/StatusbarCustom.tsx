@@ -2,13 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { StatusBar, StatusBarProps, StatusBarStyle } from 'expo-status-bar';
 
 interface StatusbarCustomProps extends StatusBarProps {
-  color?: StatusBarStyle; // Sử dụng optional để cho phép không truyền vào
+  color: StatusBarStyle; // Sử dụng optional để cho phép không truyền vào
 }
 
-const StatusbarCustom: React.FC<StatusbarCustomProps> = ({
-  color = 'auto',
-  ...props
-}) => {
+function StatusbarCustom({ color = 'auto', ...props }: StatusbarCustomProps) {
   // State để lưu trữ giá trị color
   const [statusBarStyle, setStatusBarStyle] = useState<StatusBarStyle>('auto');
 
@@ -19,6 +16,6 @@ const StatusbarCustom: React.FC<StatusbarCustomProps> = ({
 
   // Trả về StatusBar với style và các props khác
   return <StatusBar animated style={statusBarStyle} {...props} />;
-};
+}
 
 export default StatusbarCustom;

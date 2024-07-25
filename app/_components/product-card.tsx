@@ -1,18 +1,13 @@
 import React from 'react';
-import { Image, Platform, StyleSheet, View } from 'react-native';
+import { Image, Platform, StyleSheet, View, ViewStyle } from 'react-native';
 import Animated from 'react-native-reanimated';
 import Images from '@/assets/images';
 import Svgs from '@/assets/svgs';
 import Text from '@/components/TextCustom';
 
-interface ProductCardProps {
-  modeRow?: boolean;
-  styleMode?: any;
-}
-
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'white',
+    // backgroundColor: 'white',
     borderRadius: 12,
     display: 'flex',
     gap: 8,
@@ -20,7 +15,7 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     ...Platform.select({
       ios: {
-        shadowColor: '#000',
+        // shadowColor: '#000',
         shadowOffset: { width: 0, height: 0 },
         shadowOpacity: 0.1,
       },
@@ -49,7 +44,7 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   discountText: {
-    color: '#fff',
+    // color: '#fff',
     fontSize: 10,
     position: 'absolute',
     textAlign: 'center',
@@ -68,12 +63,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   priceCurrent: {
-    color: '#FF8D4D',
+    // color: '#FF8D4D',
     fontFamily: 'Exo-Bold',
     fontSize: 16,
   },
   priceOld: {
-    color: '#979797',
+    // color: '#979797',
     fontSize: 10,
     textDecorationLine: 'line-through',
   },
@@ -92,7 +87,7 @@ const styles = StyleSheet.create({
     paddingTop: 1,
   },
   ratingText: {
-    color: '#979797',
+    // color: '#979797',
     fontSize: 10,
   },
   ratingTextContainer: {
@@ -102,7 +97,7 @@ const styles = StyleSheet.create({
     fontSize: 10,
   },
   separator: {
-    color: '#979797',
+    // color: '#979797',
     fontSize: 10,
   },
   textContainer: {
@@ -110,62 +105,69 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   textPrimary: {
-    color: '#5A2828',
+    // color: '#5A2828',
     fontFamily: 'Exo-Bold',
     fontSize: 12,
     lineHeight: 18,
   },
   textSecondary: {
-    color: '#5A2828',
+    // color: '#5A2828',
     fontSize: 12,
   },
 });
 
-const ProductCard: React.FC<ProductCardProps> = ({ modeRow, styleMode }) => (
-  <Animated.View
-    style={[
-      styles.container,
-      modeRow ? styles.containerRow : styles.containerColumn,
-      styleMode,
-    ]}
-  >
-    <View style={styles.imageContainer}>
-      <Image
-        style={{ ...styles.imageProduct, width: !modeRow ? '100%' : 147 }}
-        source={Images.ProductCard}
-      />
-    </View>
-    <View style={styles.content}>
-      <View style={styles.textContainer}>
-        <Text style={styles.textPrimary} children="Brit Care" />
-        <Text
-          style={styles.textSecondary}
-          lines={2}
-          children="Wet cat food salmon & herring supper puppies & adults"
+interface ProductCardProps {
+  modeRow?: boolean;
+  styleMode?: ViewStyle;
+}
+
+function ProductCard({ modeRow, styleMode }: ProductCardProps) {
+  return (
+    <Animated.View
+      style={[
+        styles.container,
+        modeRow ? styles.containerRow : styles.containerColumn,
+        styleMode,
+      ]}
+    >
+      <View style={styles.imageContainer}>
+        <Image // TODO: fix linter no-inline-styles
+          style={{ ...styles.imageProduct, width: !modeRow ? '100%' : 147 }}
+          source={Images.ProductCard}
         />
       </View>
-      <View style={styles.priceContainer}>
-        <View style={styles.priceTextContainer}>
-          <Text style={styles.priceCurrent} children="$18" />
-          <Text style={styles.priceOld} children="$20" />
+      <View style={styles.content}>
+        <View style={styles.textContainer}>
+          <Text style={styles.textPrimary} children="Brit Care" />
+          <Text
+            style={styles.textSecondary}
+            lines={2}
+            children="Wet cat food salmon & herring supper puppies & adults"
+          />
         </View>
-        <View style={styles.discountContainer}>
-          <Svgs.ZigzagTag />
-          <Text style={styles.discountText} children="Giảm 100%" />
-        </View>
-      </View>
-      <View style={styles.ratingContainer}>
-        <View style={styles.ratingTextContainer}>
-          <View style={styles.ratingStar}>
-            <Svgs.IconStart />
+        <View style={styles.priceContainer}>
+          <View style={styles.priceTextContainer}>
+            <Text style={styles.priceCurrent} children="$18" />
+            <Text style={styles.priceOld} children="$20" />
           </View>
-          <Text style={styles.ratingText} children="4.8" />
+          <View style={styles.discountContainer}>
+            <Svgs.ZigzagTag />
+            <Text style={styles.discountText} children="Giảm 100%" />
+          </View>
         </View>
-        <Text style={styles.separator} children="|" />
-        <Text style={styles.ratingText} children="1,6k sold" />
+        <View style={styles.ratingContainer}>
+          <View style={styles.ratingTextContainer}>
+            <View style={styles.ratingStar}>
+              <Svgs.IconStart />
+            </View>
+            <Text style={styles.ratingText} children="4.8" />
+          </View>
+          <Text style={styles.separator} children="|" />
+          <Text style={styles.ratingText} children="1,6k sold" />
+        </View>
       </View>
-    </View>
-  </Animated.View>
-);
+    </Animated.View>
+  );
+}
 
 export default ProductCard;

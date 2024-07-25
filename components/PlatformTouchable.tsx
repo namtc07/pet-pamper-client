@@ -49,22 +49,22 @@ const commonStyles = StyleSheet.create({
 });
 
 interface PlatformTouchableProps {
-  onPress: () => void;
-  children: React.ReactNode;
+  onPress?: () => void;
+  children?: React.ReactNode;
   style?: ViewStyle | ViewStyle[];
   disabled?: boolean;
   hasShadow?: boolean;
   icon?: React.ReactNode;
 }
 
-const PlatformTouchable: React.FC<PlatformTouchableProps> = ({
+function PlatformTouchable({
   onPress,
   children,
   style,
   disabled,
   hasShadow,
   icon,
-}) => {
+}: PlatformTouchableProps) {
   const buttonStyle = [
     commonStyles.button,
     style,
@@ -83,6 +83,6 @@ const PlatformTouchable: React.FC<PlatformTouchableProps> = ({
       </View>
     </Pressable>
   );
-};
+}
 
 export default PlatformTouchable;

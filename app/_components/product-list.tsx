@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import React, { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, ViewStyle } from 'react-native';
 import {
   Easing,
   useAnimatedStyle,
@@ -10,15 +10,42 @@ import {
 import Text from '@/components/TextCustom';
 import ProductCard from '@/app/_components/product-card';
 
-interface ProductListProps {
-  sourceList?: any[];
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    gap: 8,
+  },
+  header: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  productContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 12,
+    justifyContent: 'space-between',
+  },
+  textHeader: { fontSize: 16 },
+});
+
+interface Product {
+  id: string;
+  name: string;
+  price: number;
+  // Add other properties as needed
 }
 
-const ProductList: React.FC<ProductListProps> = ({ sourceList = [] }) => {
+interface ProductListProps {
+  sourceList?: Product[];
+}
+
+function ProductList({ sourceList = [] }: ProductListProps) {
   const [mode, setMode] = useState(false);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const width = useSharedValue<any>('48%');
-  const height = useSharedValue<any>(286);
+  const height = useSharedValue<number>(286);
 
   const config = {
     duration: 150,
@@ -38,17 +65,11 @@ const ProductList: React.FC<ProductListProps> = ({ sourceList = [] }) => {
 
   return (
     <View style={styles.container}>
-      <View
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-        }}
-      >
+      <View style={styles.header}>
         <View>
           <Text
             children="Products"
-            style={{ fontSize: 16 }}
+            style={styles.textHeader}
             fontWeight="bold"
           />
         </View>
@@ -61,24 +82,15 @@ const ProductList: React.FC<ProductListProps> = ({ sourceList = [] }) => {
       </View>
       <View style={styles.productContainer}>
         {sourceList.map((item, index) => (
-          <ProductCard key={index} modeRow={mode} styleMode={style} />
+          <ProductCard
+            key={item.id}
+            modeRow={mode}
+            styleMode={style as ViewStyle}
+          />
         ))}
       </View>
     </View>
   );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    gap: 8,
-  },
-  productContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 12,
-    justifyContent: 'space-between',
-  },
-});
+}
 
 export default ProductList;
