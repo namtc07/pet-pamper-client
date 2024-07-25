@@ -1,24 +1,6 @@
-// src/components/Badge.tsx
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, StyleProp, ViewStyle } from 'react-native';
 import Text from '@/components/TextCustom';
-
-interface BadgeProps {
-  count: number;
-  style?: object;
-  backgroundColor?: string;
-  textColor?: string;
-}
-
-const Badge: React.FC<BadgeProps> = ({ count, style }) => {
-  if (count <= 0) return null;
-
-  return (
-    <View style={[styles.container, style]}>
-      <Text style={styles.text} children={count} fontWeight="bold" />
-    </View>
-  );
-};
 
 const styles = StyleSheet.create({
   container: {
@@ -37,5 +19,30 @@ const styles = StyleSheet.create({
     fontSize: 10,
   },
 });
+interface BadgeProps {
+  count: number;
+  style?: StyleProp<ViewStyle>;
+  backgroundColor?: string;
+  textColor?: string;
+}
+
+function Badge({ count, style, backgroundColor, textColor }: BadgeProps) {
+  if (count <= 0) return null;
+
+  return (
+    <View style={[styles.container, style, { backgroundColor }]}>
+      <Text style={[styles.text, { color: textColor }]} fontWeight="bold">
+        {count}
+      </Text>
+    </View>
+  );
+}
+
+// Đặt giá trị mặc định cho các prop không bắt buộc
+Badge.defaultProps = {
+  backgroundColor: '#FF8D4D',
+  textColor: '#fff',
+  style: {},
+};
 
 export default Badge;

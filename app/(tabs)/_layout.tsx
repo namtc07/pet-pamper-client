@@ -47,43 +47,45 @@ const tabScreens: TabScreen[] = [
   },
 ];
 
-const TabsLayout: React.FC = () => (
-  <Tabs
-    screenOptions={{
-      tabBarActiveTintColor: '#FF8D4D',
-    }}
-  >
-    {tabScreens.map(({ name, title, IconFill, Icon, badgeCount }) => (
-      <Tabs.Screen
-        key={name}
-        name={name}
-        options={{
-          title,
-          headerShown: false,
-          tabBarIcon: ({ focused }) => (
-            <View style={{ position: 'relative' }}>
-              {focused ? <IconFill /> : <Icon />}
-              {badgeCount && badgeCount > 0 && (
-                <Badge count={badgeCount} style={{ top: -5, right: -10 }} />
-              )}
-            </View>
-          ),
-          tabBarLabelStyle: {
-            fontFamily: 'Exo-Bold',
-          },
-          tabBarStyle: {
-            ...Platform.select({
-              android: {
-                paddingVertical: 5,
-                paddingBottom: 5,
-                height: 55,
-              },
-            }),
-          },
-        }}
-      />
-    ))}
-  </Tabs>
-);
-
+function TabsLayout() {
+  return (
+    <Tabs
+      screenOptions={{
+        tabBarActiveTintColor: '#FF8D4D',
+      }}
+    >
+      {tabScreens.map(({ name, title, IconFill, Icon, badgeCount }) => (
+        <Tabs.Screen
+          key={name}
+          name={name}
+          options={{
+            title,
+            headerShown: false,
+            // eslint-disable-next-line react/no-unstable-nested-components
+            tabBarIcon: ({ focused }) => (
+              <View style={{ position: 'relative' }}>
+                {focused ? <IconFill /> : <Icon />}
+                {badgeCount && badgeCount > 0 && (
+                  <Badge count={badgeCount} style={{ top: -5, right: -10 }} />
+                )}
+              </View>
+            ),
+            tabBarLabelStyle: {
+              fontFamily: 'Exo-Bold',
+            },
+            tabBarStyle: {
+              ...Platform.select({
+                android: {
+                  paddingVertical: 5,
+                  paddingBottom: 5,
+                  height: 55,
+                },
+              }),
+            },
+          }}
+        />
+      ))}
+    </Tabs>
+  );
+}
 export default TabsLayout;

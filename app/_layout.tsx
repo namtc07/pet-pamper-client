@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 import {
   DarkTheme,
   DefaultTheme,
@@ -70,7 +71,7 @@ export default function RootLayout() {
     <AuthProvider>
       <ApolloProvider client={client}>
         <ThemeProvider
-          value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
+          value={colorScheme === 'dark' ? DefaultTheme : DefaultTheme}
         >
           <Stack screenOptions={{ headerShown: false }}>
             <Stack.Screen name="index" />

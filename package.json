@@ -48,6 +48,8 @@
     "axios": "^1.7.2",
     "babel-plugin-module-resolver": "^5.0.2",
     "babel-plugin-react-docgen-typescript": "^1.5.1",
+    "babel-plugin-react-native-classname-to-style": "^1.2.2",
+    "babel-plugin-react-native-platform-specific-extensions": "^1.1.1",
     "dayjs": "^1.11.11",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-prettier": "^5.2.1",
@@ -88,7 +90,8 @@
     "react-native-url-polyfill": "^2.0.0",
     "react-native-vector-icons": "^10.1.0",
     "react-native-web": "~0.19.10",
-    "react-navigation": "^5.0.0"
+    "react-navigation": "^5.0.0",
+    "styled-components": "^6.1.12"
   },
   "devDependencies": {
     "@babel/core": "^7.24.0",
@@ -154,7 +157,8 @@
   },
   "resolutions": {
     "react-docgen-typescript": "2.2.2",
-    "@storybook/react-docgen-typescript-plugin": "1.0.6--canary.9.cd77847.0"
+    "@storybook/react-docgen-typescript-plugin": "1.0.6--canary.9.cd77847.0",
+    "styled-components": "^5"
   },
   "overrides": {
     "react-docgen-typescript": "2.2.2",

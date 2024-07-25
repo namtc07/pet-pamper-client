@@ -2,7 +2,7 @@ import { StatusBar, StyleSheet } from 'react-native';
 
 export const EMAIL_REGEX = /\S+@\S+\.\S+/;
 
-export const styles = StyleSheet.create({
+export const stylesAuth = StyleSheet.create({
   button: {
     alignItems: 'center',
     borderRadius: 12,

@@ -1,20 +1,28 @@
 import React from 'react';
 import {
-  View,
   ActivityIndicator,
   Dimensions,
-  Platform,
   Modal,
+  Platform,
   StyleSheet,
-  ViewStyle,
+  View,
 } from 'react-native';
 
+const styles = StyleSheet.create({
+  modalBackground: {
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    flex: 1,
+    justifyContent: 'center',
+  },
+});
+
 interface LoaderCustomProps {
-  isLoading: boolean;
-  visible: boolean;
+  isLoading?: boolean;
+  visible?: boolean;
 }
 
-const LoaderCustom: React.FC<LoaderCustomProps> = ({ isLoading, visible }) => {
+function LoaderCustom({ isLoading, visible }: LoaderCustomProps) {
   const osName = Platform.OS;
   const screenHeight = Dimensions.get('screen').height;
 
@@ -31,15 +39,6 @@ const LoaderCustom: React.FC<LoaderCustomProps> = ({ isLoading, visible }) => {
       </View>
     </Modal>
   );
-};
-
-const styles = StyleSheet.create({
-  modalBackground: {
-    alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.4)',
-    flex: 1,
-    justifyContent: 'center',
-  },
-});
+}
 
 export default LoaderCustom;

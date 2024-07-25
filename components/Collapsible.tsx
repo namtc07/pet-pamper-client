@@ -1,12 +1,23 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { PropsWithChildren, useState } from 'react';
+import React, { PropsWithChildren, useState } from 'react';
 import { StyleSheet, TouchableOpacity, useColorScheme } from 'react-native';
-
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
-import { Colors } from '@/constants/Colors';
+import Colors from '@/constants/Colors';
 
-export function Collapsible({
+const styles = StyleSheet.create({
+  content: {
+    marginLeft: 24,
+    marginTop: 6,
+  },
+  heading: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    gap: 6,
+  },
+});
+
+function Collapsible({
   children,
   title,
 }: PropsWithChildren & { title: string }) {
@@ -31,15 +42,4 @@ export function Collapsible({
     </ThemedView>
   );
 }
-
-const styles = StyleSheet.create({
-  content: {
-    marginLeft: 24,
-    marginTop: 6,
-  },
-  heading: {
-    alignItems: 'center',
-    flexDirection: 'row',
-    gap: 6,
-  },
-});
+export default Collapsible;
