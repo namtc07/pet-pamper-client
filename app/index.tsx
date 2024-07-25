@@ -8,12 +8,9 @@ import {
 } from 'react-native';
 
 import Images from '@/assets/images';
+import PlatformTouchable from '@/components/PlatformTouchable';
 import StatusbarCustom from '@/components/StatusbarCustom';
 import Text from '@/components/TextCustom';
-import PlatformTouchable from '@/components/PlatformTouchable';
-import { MyButton } from '@/src/components/Button';
-
-const storybookEnabled = process.env.EXPO_PUBLIC_STORYBOOK_ENABLED === 'true';
 
 function App() {
   return (
@@ -36,14 +33,12 @@ function App() {
         </PlatformTouchable>
         <PlatformTouchable
           onPress={() => {
-            console.log(123);
             router.navigate('log-in');
           }}
           style={styles.logIn}
         >
           <Text style={styles.textLogIn} children="Log in" />
         </PlatformTouchable>
-        <MyButton text="hehe" />
       </View>
     </SafeAreaView>
   );
