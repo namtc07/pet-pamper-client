@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import { ScrollViewStyleReset } from 'expo-router/html';
 import { type PropsWithChildren } from 'react';
 

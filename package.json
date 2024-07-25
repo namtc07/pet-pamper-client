@@ -11,8 +11,8 @@
     "lint:fix": "npx expo eslint --fix --ext ts,tsx",
     "precommit": "lint-staged",
     "test": "jest --coverage",
-    "storybook-generate": "sb-rn-get-stories",
-    "storybook-watch": "sb-rn-watcher",
+    "storybook-generate": "sb-rn-get-stories .storybook/web",
+    "storybook-watch": "sb-rn-watcher .storybook/web",
     "storybook:web": "storybook dev --config-dir .storybook/web -p 6006",
     "build-storybook": "storybook build --config-dir .storybook/web",
     "chromatic": "npx chromatic --project-token=chpt_1d867511fb96aba"

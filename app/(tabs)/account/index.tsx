@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
   Image,
   RefreshControl,
@@ -9,10 +9,9 @@ import {
   View,
 } from 'react-native';
 // import { LoginManager } from 'react-native-fbsdk-next';
-import { router } from 'expo-router';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { AuthContext } from '@/context/AuthContext';
 import PlatformTouchable from '@/components/PlatformTouchable';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { router } from 'expo-router';
 
 const styles = StyleSheet.create({
   container: {
@@ -40,8 +39,6 @@ interface UserData {
 }
 
 const AccountScreen: React.FC = () => {
-  const { setAuth } = useContext(AuthContext);
-
   const handleFacebookLogout = async () => {
     await AsyncStorage.removeItem('auth');
     // LoginManager.logOut();

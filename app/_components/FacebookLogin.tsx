@@ -1,6 +1,6 @@
 import { requestTrackingPermissionsAsync } from 'expo-tracking-transparency';
 import React, { useContext, useEffect } from 'react';
-import { Platform, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 // import {
 //   AccessToken,
 //   GraphRequest,
@@ -8,10 +8,10 @@ import { Platform, StyleSheet } from 'react-native';
 //   LoginManager,
 //   Settings,
 // } from 'react-native-fbsdk-next';
-import { AuthContext } from '@/context/AuthContext';
 import Svgs from '@/assets/svgs';
 import PlatformTouchable from '@/components/PlatformTouchable';
 import Text from '@/components/TextCustom';
+import { AuthContext } from '@/context/AuthContext';
 
 const styles = StyleSheet.create({
   facebook: {

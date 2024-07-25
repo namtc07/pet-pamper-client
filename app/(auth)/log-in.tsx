@@ -1,5 +1,11 @@
 // pages/Login.tsx
 
+import {
+  checkButtonState,
+  loadStoredData,
+  saveDataToStorage,
+  validateEmail,
+} from '@/app/_utils/authHelpers';
 import { AntDesign, Feather } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import React, { useContext, useEffect, useState } from 'react';
@@ -12,20 +18,14 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import {
-  checkButtonState,
-  loadStoredData,
-  saveDataToStorage,
-  validateEmail,
-} from '@/app/_utils/authHelpers';
 
 import Svgs from '@/assets/svgs';
-import { AuthContext } from '@/context/AuthContext';
-import StatusbarCustom from '@/components/StatusbarCustom';
-import Text from '@/components/TextCustom';
+import LoaderCustom from '@/components/LoaderCustom';
 import PlatformTouchable from '@/components/PlatformTouchable';
 import SeparatorCustom from '@/components/SeparatorCustom';
-import LoaderCustom from '@/components/LoaderCustom';
+import StatusbarCustom from '@/components/StatusbarCustom';
+import Text from '@/components/TextCustom';
+import { AuthContext } from '@/context/AuthContext';
 import FacebookLogin from '../_components/FacebookLogin';
 import { styles } from './styles';
 
