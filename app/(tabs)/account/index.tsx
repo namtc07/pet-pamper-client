@@ -1,14 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import {
-  Image,
   RefreshControl,
   SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
-  View,
 } from 'react-native';
-// import { LoginManager } from 'react-native-fbsdk-next';
 import PlatformTouchable from '@/components/PlatformTouchable';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { router } from 'expo-router';
@@ -38,14 +35,9 @@ interface UserData {
   id?: string;
 }
 
-const AccountScreen: React.FC = () => {
+function AccountScreen() {
   const handleFacebookLogout = async () => {
     await AsyncStorage.removeItem('auth');
-    // LoginManager.logOut();
-    // setAuth({
-    //   token: '',
-    //   phone: '',
-    // }); // Clear auth context
     router.navigate('/');
   };
 
@@ -92,17 +84,6 @@ const AccountScreen: React.FC = () => {
           />
         }
       >
-        <View>
-          <Image
-            style={{ width: 50, height: 50 }}
-            source={{
-              uri: user?.picture?.data?.url ?? 'https://via.placeholder.com/50',
-            }}
-          />
-          <Text style={{ color: 'black' }}>{user?.email}</Text>
-          <Text style={{ color: 'black' }}>{user?.name}</Text>
-          <Text style={{ color: 'black' }}>{user?.id}</Text>
-        </View>
         <PlatformTouchable
           hasShadow
           style={styles.facebook}
@@ -112,6 +93,6 @@ const AccountScreen: React.FC = () => {
       </ScrollView>
     </SafeAreaView>
   );
-};
+}
 
 export default AccountScreen;

@@ -1,14 +1,9 @@
 import React from 'react';
-import { Image, Platform, StyleSheet, View } from 'react-native';
+import { Image, Platform, StyleSheet, View, ViewStyle } from 'react-native';
 import Animated from 'react-native-reanimated';
 import Images from '@/assets/images';
 import Svgs from '@/assets/svgs';
 import Text from '@/components/TextCustom';
-
-interface ProductCardProps {
-  modeRow?: boolean;
-  styleMode?: any;
-}
 
 const styles = StyleSheet.create({
   container: {
@@ -121,51 +116,58 @@ const styles = StyleSheet.create({
   },
 });
 
-const ProductCard: React.FC<ProductCardProps> = ({ modeRow, styleMode }) => (
-  <Animated.View
-    style={[
-      styles.container,
-      modeRow ? styles.containerRow : styles.containerColumn,
-      styleMode,
-    ]}
-  >
-    <View style={styles.imageContainer}>
-      <Image
-        style={{ ...styles.imageProduct, width: !modeRow ? '100%' : 147 }}
-        source={Images.ProductCard}
-      />
-    </View>
-    <View style={styles.content}>
-      <View style={styles.textContainer}>
-        <Text style={styles.textPrimary} children="Brit Care" />
-        <Text
-          style={styles.textSecondary}
-          lines={2}
-          children="Wet cat food salmon & herring supper puppies & adults"
+interface ProductCardProps {
+  modeRow?: boolean;
+  styleMode?: ViewStyle;
+}
+
+function ProductCard({ modeRow, styleMode }: ProductCardProps) {
+  return (
+    <Animated.View
+      style={[
+        styles.container,
+        modeRow ? styles.containerRow : styles.containerColumn,
+        styleMode,
+      ]}
+    >
+      <View style={styles.imageContainer}>
+        <Image // TODO: fix linter no-inline-styles
+          style={{ ...styles.imageProduct, width: !modeRow ? '100%' : 147 }}
+          source={Images.ProductCard}
         />
       </View>
-      <View style={styles.priceContainer}>
-        <View style={styles.priceTextContainer}>
-          <Text style={styles.priceCurrent} children="$18" />
-          <Text style={styles.priceOld} children="$20" />
+      <View style={styles.content}>
+        <View style={styles.textContainer}>
+          <Text style={styles.textPrimary} children="Brit Care" />
+          <Text
+            style={styles.textSecondary}
+            lines={2}
+            children="Wet cat food salmon & herring supper puppies & adults"
+          />
         </View>
-        <View style={styles.discountContainer}>
-          <Svgs.ZigzagTag />
-          <Text style={styles.discountText} children="Giảm 100%" />
-        </View>
-      </View>
-      <View style={styles.ratingContainer}>
-        <View style={styles.ratingTextContainer}>
-          <View style={styles.ratingStar}>
-            <Svgs.IconStart />
+        <View style={styles.priceContainer}>
+          <View style={styles.priceTextContainer}>
+            <Text style={styles.priceCurrent} children="$18" />
+            <Text style={styles.priceOld} children="$20" />
           </View>
-          <Text style={styles.ratingText} children="4.8" />
+          <View style={styles.discountContainer}>
+            <Svgs.ZigzagTag />
+            <Text style={styles.discountText} children="Giảm 100%" />
+          </View>
         </View>
-        <Text style={styles.separator} children="|" />
-        <Text style={styles.ratingText} children="1,6k sold" />
+        <View style={styles.ratingContainer}>
+          <View style={styles.ratingTextContainer}>
+            <View style={styles.ratingStar}>
+              <Svgs.IconStart />
+            </View>
+            <Text style={styles.ratingText} children="4.8" />
+          </View>
+          <Text style={styles.separator} children="|" />
+          <Text style={styles.ratingText} children="1,6k sold" />
+        </View>
       </View>
-    </View>
-  </Animated.View>
-);
+    </Animated.View>
+  );
+}
 
 export default ProductCard;

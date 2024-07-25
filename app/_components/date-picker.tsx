@@ -1,14 +1,9 @@
+import React, { useState } from 'react';
 import dayjs from 'dayjs';
-import { useState } from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
-import DateTimePicker from 'react-native-ui-datepicker';
+import DateTimePicker, { DateType } from 'react-native-ui-datepicker';
 import Svgs from '@/assets/svgs';
 import MenuTabBlock from './menu-tab-block';
-
-interface Range {
-  startDate?: Date;
-  endDate?: Date;
-}
 
 const styles = StyleSheet.create({
   calendarTextStyle: {
@@ -47,13 +42,18 @@ const styles = StyleSheet.create({
   },
 });
 
+interface Range {
+  startDate?: DateType;
+  endDate?: DateType;
+}
+
 function DatePicker() {
   const [range, setRange] = useState<Range>({
     startDate: undefined,
     endDate: undefined,
   });
 
-  const handleDateChange = (params: any) => {
+  const handleDateChange = (params: Range) => {
     setRange({
       startDate: params?.startDate,
       endDate: params?.endDate,
@@ -69,15 +69,19 @@ function DatePicker() {
         startDate={range.startDate}
         endDate={range.endDate}
         onChange={handleDateChange}
-        calendarTextStyle={styles.calendarTextStyle as any}
-        selectedTextStyle={styles.selectedTextStyle as any}
+        calendarTextStyle={styles.calendarTextStyle}
+        selectedTextStyle={styles.selectedTextStyle}
         minDate={yesterday}
         selectedItemColor="#FFBA69"
         firstDayOfWeek={1}
-        weekDaysTextStyle={styles.weekDaysTextStyle as any}
+        weekDaysTextStyle={styles.weekDaysTextStyle}
       />
       <View style={styles.schedule}>
-        <MenuTabBlock title="Schedule" icon={<Svgs.IconClock />} />
+        <MenuTabBlock
+          title="Schedule"
+          icon={<Svgs.IconClock />}
+          onPress={() => console.log('onPress')}
+        />
       </View>
     </View>
   );

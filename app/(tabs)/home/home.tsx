@@ -1,3 +1,10 @@
+import Badge from '@/app/_components/Badge';
+import DatePicker from '@/app/_components/date-picker';
+import MenuTabBlock from '@/app/_components/menu-tab-block';
+import ProductList from '@/app/_components/product-list';
+import Svgs from '@/assets/svgs';
+import StatusbarCustom from '@/components/StatusbarCustom';
+import { StatusBarStyle } from 'expo-status-bar';
 import React, { useCallback, useRef, useState } from 'react';
 import {
   Animated,
@@ -11,23 +18,16 @@ import {
 } from 'react-native';
 import Carousel from 'react-native-reanimated-carousel';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { StatusBarStyle } from 'expo-status-bar';
-import DatePicker from '@/app/_components/date-picker';
-import MenuTabBlock from '@/app/_components/menu-tab-block';
-import ProductList from '@/app/_components/product-list';
-import Svgs from '@/assets/svgs';
-import Badge from '@/app/_components/Badge';
-import StatusbarCustom from '@/components/StatusbarCustom';
 import { banners, styles } from './styles';
 
-export const createBackgroundColorInterpolation = (scrollY: any) =>
+export const createBackgroundColorInterpolation = (scrollY: Animated.Value) =>
   scrollY.interpolate({
     inputRange: [0, 100],
     outputRange: ['rgba(255, 255, 255, 0)', 'rgba(255, 255, 255, 1)'],
     extrapolate: 'clamp',
   });
 
-export const fadeIn = (fadeAnim: any) => {
+export const fadeIn = (fadeAnim: Animated.Value) => {
   Animated.timing(fadeAnim, {
     toValue: 1,
     duration: 100,
@@ -35,7 +35,7 @@ export const fadeIn = (fadeAnim: any) => {
   }).start();
 };
 
-export const fadeOut = (fadeAnim: any) => {
+export const fadeOut = (fadeAnim: Animated.Value) => {
   Animated.timing(fadeAnim, {
     toValue: 0,
     duration: 30,
@@ -43,7 +43,7 @@ export const fadeOut = (fadeAnim: any) => {
   }).start();
 };
 
-const HomeScreen: React.FC = () => {
+function HomeScreen() {
   const scrollViewRef = useRef<ScrollView>(null);
 
   const { width } = Dimensions.get('window');
@@ -58,7 +58,9 @@ const HomeScreen: React.FC = () => {
 
   const backgroundColor = createBackgroundColorInterpolation(scrollY);
 
-  const handleScroll = (event: any) => {
+  const handleScroll = (event: {
+    nativeEvent: { contentOffset: { y: number } },
+  }) => {
     const { y } = event.nativeEvent.contentOffset;
     scrollY.setValue(y);
 
@@ -184,7 +186,6 @@ const HomeScreen: React.FC = () => {
           <View style={styles.pagination}>
             {banners.map((_, index) => (
               <View
-                key={index}
                 style={[
                   styles.dot,
                   currentIndex === index
@@ -195,14 +196,28 @@ const HomeScreen: React.FC = () => {
             ))}
           </View>
           <View style={styles.menuTabBLock}>
-            <MenuTabBlock mode="multi" source={menuTabs} />
+            <MenuTabBlock
+              mode="multi"
+              source={menuTabs}
+              icon={undefined}
+              title=""
+              onPress={() => console.log('onPress')}
+            />
           </View>
         </View>
         <View style={styles.content}>
           <View>
             <DatePicker />
           </View>
-          <ProductList sourceList={[{}, {}, {}, {}, {}]} />
+          <ProductList
+            sourceList={[
+              { id: '1', name: 'Product 1', price: 10000 },
+              { id: '2', name: 'Product 2', price: 20000 },
+              { id: '3', name: 'Product 3', price: 30000 },
+              { id: '4', name: 'Product 4', price: 40000 },
+              { id: '5', name: 'Product 5', price: 50000 },
+            ]}
+          />
         </View>
       </ScrollView>
       {showBackToTop && (
@@ -217,6 +232,6 @@ const HomeScreen: React.FC = () => {
       )}
     </View>
   );
-};
+}
 
 export default HomeScreen;

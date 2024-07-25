@@ -52,7 +52,7 @@ const getPositionStyle = (position: SeparatorPosition): TextStyle => {
   }
 };
 
-const SeparatorCustom: React.FC<SeparatorCustomProps> = ({
+function SeparatorCustom({
   text,
   position = 'none',
   width = 1,
@@ -60,7 +60,7 @@ const SeparatorCustom: React.FC<SeparatorCustomProps> = ({
   textColor = '#737373',
   propsText,
   propsSeparator,
-}) => {
+}: SeparatorCustomProps) {
   const separatorStyle: ViewStyle = {
     backgroundColor: color,
     height: width,
@@ -87,6 +87,6 @@ const SeparatorCustom: React.FC<SeparatorCustomProps> = ({
       {position === 'end' && renderText}
     </View>
   );
-};
+}
 
 export default SeparatorCustom;

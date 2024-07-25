@@ -8,12 +8,29 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { ThemedView } from '@/components/ThemedView';
+import React from 'react';
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  content: {
+    flex: 1,
+    gap: 16,
+    overflow: 'hidden',
+    padding: 32,
+  },
+  header: {
+    height: 250,
+    overflow: 'hidden',
+  },
+});
 
 const HEADER_HEIGHT = 250;
 
 type Props = PropsWithChildren<{
-  headerImage: ReactElement,
-  headerBackgroundColor: { dark: string, light: string },
+  headerImage?: ReactElement,
+  headerBackgroundColor?: { dark: string, light: string },
 }>;
 
 export default function ParallaxScrollView({
@@ -61,19 +78,3 @@ export default function ParallaxScrollView({
     </ThemedView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  content: {
-    flex: 1,
-    gap: 16,
-    overflow: 'hidden',
-    padding: 32,
-  },
-  header: {
-    height: 250,
-    overflow: 'hidden',
-  },
-});

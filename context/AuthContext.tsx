@@ -1,8 +1,7 @@
-import React, { createContext, useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
-import { router, useRouter } from 'expo-router';
-import { ExpoRouter } from 'expo-router/types/expo-router';
+import { useRouter } from 'expo-router';
+import React, { createContext, useEffect, useMemo, useState } from 'react';
 
 interface AuthData {
   token: string;
@@ -29,7 +28,7 @@ const configureAxiosHeaders = (token: string, phone: string) => {
   axios.defaults.headers['X-Auth-Phone'] = phone;
 };
 
-const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
+function AuthProvider({ children }: AuthProviderProps) {
   const [auth, setAuthState] = useState<AuthData | undefined>(undefined);
   const routerCustom = useRouter();
 
@@ -64,17 +63,18 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   useEffect(() => {
     if (auth?.token) {
-      router.replace('/(tabs)/home/home');
-      // Remove the following line as canGoBack does not take arguments
-      // routerCustom.canGoBack(false);
+      routerCustom.replace('/(tabs)/home/home');
     }
   }, [auth]);
 
-  return (
-    <AuthContext.Provider value={{ auth, setAuth: updateAuthState }}>
-      {children}
-    </AuthContext.Provider>
+  const contextValue = useMemo(
+    () => ({ auth, setAuth: updateAuthState }),
+    [auth],
   );
-};
+
+  return (
+    <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
+  );
+}
 
 export { AuthContext, AuthProvider };
