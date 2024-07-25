@@ -55,6 +55,7 @@ module.exports = {
       'warn',
       { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
     ],
+    'import/no-named-as-default': 'off',
     // 'no-unused-vars': 'warn',
     // 'no-shadow': 'off',
     // 'react/no-array-index-key': 'off',
