@@ -5,8 +5,8 @@ import Text from '@/components/TextCustom';
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    // backgroundColor: '#FF8D4D',
-    // borderColor: 'white',
+    backgroundColor: '#FF8D4D',
+    borderColor: 'white',
     borderRadius: 10,
     borderWidth: 0.5,
     height: 20,
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     width: 20,
   },
   text: {
-    // color: '#fff',
+    color: '#fff',
     fontSize: 10,
   },
 });

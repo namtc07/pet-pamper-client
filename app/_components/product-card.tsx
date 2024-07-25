@@ -7,7 +7,7 @@ import Text from '@/components/TextCustom';
 
 const styles = StyleSheet.create({
   container: {
-    // backgroundColor: 'white',
+    backgroundColor: 'white',
     borderRadius: 12,
     display: 'flex',
     gap: 8,
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     ...Platform.select({
       ios: {
-        // shadowColor: '#000',
+        shadowColor: '#000',
         shadowOffset: { width: 0, height: 0 },
         shadowOpacity: 0.1,
       },
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   discountText: {
-    // color: '#fff',
+    color: '#fff',
     fontSize: 10,
     position: 'absolute',
     textAlign: 'center',
@@ -63,12 +63,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   priceCurrent: {
-    // color: '#FF8D4D',
+    color: '#FF8D4D',
     fontFamily: 'Exo-Bold',
     fontSize: 16,
   },
   priceOld: {
-    // color: '#979797',
+    color: '#979797',
     fontSize: 10,
     textDecorationLine: 'line-through',
   },
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     paddingTop: 1,
   },
   ratingText: {
-    // color: '#979797',
+    color: '#979797',
     fontSize: 10,
   },
   ratingTextContainer: {
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     fontSize: 10,
   },
   separator: {
-    // color: '#979797',
+    color: '#979797',
     fontSize: 10,
   },
   textContainer: {
@@ -105,13 +105,13 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   textPrimary: {
-    // color: '#5A2828',
+    color: '#5A2828',
     fontFamily: 'Exo-Bold',
     fontSize: 12,
     lineHeight: 18,
   },
   textSecondary: {
-    // color: '#5A2828',
+    color: '#5A2828',
     fontSize: 12,
   },
 });

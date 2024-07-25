@@ -24,7 +24,7 @@ import StatusbarCustom from '@/components/StatusbarCustom';
 import Text from '@/components/TextCustom';
 import { AuthContext } from '@/context/AuthContext';
 import FacebookLogin from '../_components/FacebookLogin';
-import { styles } from './styles';
+import { stylesAuth } from '../_styles/stylesAuth';
 
 function Signup() {
   const [loading, setLoading] = useState(false);
@@ -71,27 +71,29 @@ function Signup() {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={stylesAuth.container}>
       <StatusbarCustom color="dark" />
-      <View style={styles.header}>
+      <View style={stylesAuth.header}>
         <TouchableWithoutFeedback onPress={handleBackPress}>
-          <View style={styles.iconContainer}>
+          <View style={stylesAuth.iconContainer}>
             <AntDesign name="left" size={24} color="#FF8D4D" />
           </View>
         </TouchableWithoutFeedback>
       </View>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={styles.content}>
+        <View style={stylesAuth.content}>
           <View>
             <View>
-              <Text style={styles.title} children="Sign up" />
+              <Text style={stylesAuth.title} children="Sign up" />
             </View>
             <View>
-              <View style={styles.emailContainer}>
+              <View style={stylesAuth.emailContainer}>
                 <TextInput
                   style={[
-                    styles.input,
-                    !emailValid && email?.trim() !== '' && styles.invalidInput,
+                    stylesAuth.input,
+                    !emailValid &&
+                      email?.trim() !== '' &&
+                      stylesAuth.invalidInput,
                   ]}
                   placeholder="Email"
                   placeholderTextColor="#979797"
@@ -102,19 +104,19 @@ function Signup() {
                 {!emailValid && email?.trim() !== '' && (
                   <View style={{ paddingLeft: 4 }}>
                     <Text
-                      style={styles.invalidText}
+                      style={stylesAuth.invalidText}
                       children="Please enter your email address in format:"
                     />
                     <Text
-                      style={styles.invalidText}
+                      style={stylesAuth.invalidText}
                       children="yourname@example.com"
                     />
                   </View>
                 )}
               </View>
-              <View style={styles.passwordContainer}>
+              <View style={stylesAuth.passwordContainer}>
                 <TextInput
-                  style={styles.input}
+                  style={stylesAuth.input}
                   placeholder="Password"
                   secureTextEntry={!passwordVisible}
                   placeholderTextColor="#979797"
@@ -123,7 +125,7 @@ function Signup() {
                   onChangeText={handlePasswordChange}
                 />
                 <TouchableOpacity
-                  style={[styles.eyeIcon, styles.eyeIconSignup]}
+                  style={[stylesAuth.eyeIcon, stylesAuth.eyeIconSignup]}
                   onPress={() => setPasswordVisible(!passwordVisible)}
                 >
                   <Feather
@@ -140,13 +142,13 @@ function Signup() {
               disabled={buttonDisabled}
               onPress={handleSignUp}
               style={[
-                styles.button,
+                stylesAuth.button,
                 { backgroundColor: buttonDisabled ? '#CBCBCB' : '#FF8D4D' },
               ]}
               children={
                 <Text
                   style={[
-                    styles.textSignUp,
+                    stylesAuth.textSignUp,
                     { color: buttonDisabled ? '#979797' : 'white' },
                   ]}
                   children="Sign Up"
@@ -161,11 +163,13 @@ function Signup() {
               propsText={{ fontWeight: '700' }}
             />
           </View>
-          <View style={styles.buttonGroup}>
+          <View style={stylesAuth.buttonGroup}>
             <PlatformTouchable
-              style={styles.google}
+              style={stylesAuth.google}
               hasShadow
-              children={<Text style={styles.textGoogle} children="Google" />}
+              children={
+                <Text style={stylesAuth.textGoogle} children="Google" />
+              }
               icon={<Svgs.IconGoogle />}
               onPress={() => console.log('onPress')}
             />

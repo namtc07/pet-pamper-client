@@ -1,6 +1,7 @@
 import Svgs from '@/assets/svgs';
 import PlatformTouchable from '@/components/PlatformTouchable';
 import Text from '@/components/TextCustom';
+import Colors from '@/constants/Colors';
 import { AuthContext } from '@/context/AuthContext';
 import { requestTrackingPermissionsAsync } from 'expo-tracking-transparency';
 import React, { useContext, useEffect } from 'react';
@@ -8,10 +9,10 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   facebook: {
-    // backgroundColor: 'white',
+    backgroundColor: Colors.light.background,
   },
   textFacebook: {
-    // color: '#CBCBCB',
+    color: '#CBCBCB',
   },
 });
 

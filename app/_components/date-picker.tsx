@@ -7,18 +7,18 @@ import MenuTabBlock from './menu-tab-block';
 
 const styles = StyleSheet.create({
   calendarTextStyle: {
-    // color: '#5A2828',
+    color: '#5A2828',
     fontFamily: 'ExoBold',
   },
   container: {
-    // backgroundColor: 'white',
+    backgroundColor: 'white',
     borderRadius: 12,
     flex: 1,
     marginBottom: 30,
     paddingBottom: 6,
     ...Platform.select({
       ios: {
-        // shadowColor: '#000',
+        shadowColor: '#000',
         shadowOffset: { width: 0, height: 0 },
         shadowOpacity: 0.1,
       },
@@ -34,11 +34,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   selectedTextStyle: {
-    // color: '#fff',
+    color: '#fff',
     fontFamily: 'bold',
   },
   weekDaysTextStyle: {
-    // color: '#5A2828',
+    color: '#5A2828',
   },
 });
 

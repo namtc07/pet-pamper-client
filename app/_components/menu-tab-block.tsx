@@ -26,14 +26,14 @@ const styles = StyleSheet.create({
   },
   tabContent: {
     alignItems: 'center',
-    // backgroundColor: 'white',
+    backgroundColor: 'white',
     borderRadius: 12,
     flexDirection: 'row',
     height: 40,
     paddingHorizontal: 12,
     ...Platform.select({
       ios: {
-        // shadowColor: '#000',
+        shadowColor: '#000',
         shadowOffset: { width: 0, height: 0 },
         shadowOpacity: 0.1,
       },
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     }),
   },
   title: {
-    // color: '#FF8D4D',
+    color: '#FF8D4D',
     fontFamily: 'Exo-Bold',
     marginLeft: 8,
   },

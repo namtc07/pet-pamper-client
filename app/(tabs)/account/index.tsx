@@ -12,14 +12,14 @@ import { router } from 'expo-router';
 
 const styles = StyleSheet.create({
   container: {
-    // backgroundColor: 'white',
+    backgroundColor: 'white',
     flex: 1,
     padding: 16,
   },
   facebook: {
     alignItems: 'center',
-    // backgroundColor: 'white',
-    // borderColor: '#FF8D4D',
+    backgroundColor: 'white',
+    borderColor: '#FF8D4D',
     borderRadius: 8,
     borderWidth: 1,
     justifyContent: 'center',
