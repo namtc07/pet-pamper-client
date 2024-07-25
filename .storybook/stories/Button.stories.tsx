@@ -1,41 +1,46 @@
+import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { View } from 'react-native';
-import { MyButton, MyButtonProps } from '../../src/components/Button';
-import { Meta, StoryObj } from '@storybook/react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import { ButtonCustom } from './Button';
 
-const meta: Meta<MyButtonProps> = {
-  title: 'Button',
-  component: MyButton,
-  argTypes: {
-    onPress: {
-      action: 'onPress event',
-    },
+const button = {
+  title: 'ButtonCustom',
+  component: ButtonCustom,
+  args: {
+    text: 'Hello world',
+    onPress: () => alert('Button pressed!'),
+    colorIcon: 'red',
   },
-
   decorators: [
     (Story) => (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <View style={{ padding: 16 }}>
         <Story />
       </View>
     ),
   ],
+} satisfies Meta<typeof ButtonCustom>;
+
+export default button;
+
+type Story = StoryObj<typeof button>;
+
+export const Primary: Story = {
+  args: { text: 'Primary' },
 };
 
-export default meta;
-
-type Story = StoryObj<MyButtonProps>;
-
-export const Basic: Story = {
-  storyName: 'Basic',
+export const Outline: Story = {
   args: {
-    disabled: false,
-    text: 'Tap me',
+    variant: 'outline',
+    text: 'Outline',
   },
 };
 
-export const Disabled: Story = {
+export const WithIcon: Story = {
   args: {
-    disabled: true,
-    text: 'Disabled',
+    text: 'Button with Icon',
+    iconName: 'notifications-outline', // Tên icon
+    iconLibrary: Icon, // Loại icon
+    colorIcon: 'red',
   },
 };
