@@ -8,41 +8,41 @@ jest.mock('@/hooks/useThemeColor', () => ({
   useThemeColor: jest.fn(),
 }));
 
-describe('ThemedView', () => {
-  it('should apply background color from useThemeColor hook', () => {
+describe('ThemedView Snapshot Tests', () => {
+  it('should match snapshot with light color', () => {
     // Mocking useThemeColor hook to return a specific color
-    (useThemeColor as jest.Mock).mockReturnValue('blue');
+    (useThemeColor as jest.Mock).mockReturnValue('white');
 
-    const { getByTestId } = render(
-      <ThemedView testID="themed-view" lightColor="white" darkColor="black" />,
+    const { toJSON } = render(
+      <ThemedView lightColor="white" darkColor="black" />,
     );
 
-    const themedView = getByTestId('themed-view');
-    expect(themedView.props.style[0].backgroundColor).toBe('blue');
+    expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should apply additional styles passed via props', () => {
-    (useThemeColor as jest.Mock).mockReturnValue('blue');
+  it('should match snapshot with dark color', () => {
+    // Mocking useThemeColor hook to return a specific color
+    (useThemeColor as jest.Mock).mockReturnValue('black');
 
-    const { getByTestId } = render(
-      <ThemedView testID="themed-view" style={{ borderWidth: 1 }} />,
+    const { toJSON } = render(
+      <ThemedView lightColor="white" darkColor="black" />,
     );
 
-    const themedView = getByTestId('themed-view');
-    expect(themedView.props.style).toEqual([
-      { backgroundColor: 'blue' },
-      { borderWidth: 1 },
-    ]);
+    expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should spread additional props', () => {
+  it('should match snapshot with additional styles and props', () => {
     (useThemeColor as jest.Mock).mockReturnValue('blue');
 
-    const { getByTestId } = render(
-      <ThemedView testID="themed-view" accessibilityLabel="Themed View" />,
+    const { toJSON } = render(
+      <ThemedView
+        lightColor="white"
+        darkColor="black"
+        style={{ borderWidth: 1 }}
+        accessibilityLabel="Themed View"
+      />,
     );
 
-    const themedView = getByTestId('themed-view');
-    expect(themedView.props.accessibilityLabel).toBe('Themed View');
+    expect(toJSON()).toMatchSnapshot();
   });
 });

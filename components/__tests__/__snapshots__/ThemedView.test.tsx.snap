@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ThemedView Snapshot Tests should match snapshot with additional styles and props 1`] = `
+<View
+  accessibilityLabel="Themed View"
+  style={
+    [
+      {
+        "backgroundColor": "blue",
+      },
+      {
+        "borderWidth": 1,
+      },
+    ]
+  }
+/>
+`;
+
+exports[`ThemedView Snapshot Tests should match snapshot with dark color 1`] = `
+<View
+  style={
+    [
+      {
+        "backgroundColor": "black",
+      },
+      undefined,
+    ]
+  }
+/>
+`;
+
+exports[`ThemedView Snapshot Tests should match snapshot with light color 1`] = `
+<View
+  style={
+    [
+      {
+        "backgroundColor": "white",
+      },
+      undefined,
+    ]
+  }
+/>
+`;

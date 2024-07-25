@@ -1,14 +1,14 @@
+/* eslint-disable react-native/sort-styles */
 import { Platform, StatusBar, StyleSheet } from 'react-native';
 import Images from '@/assets/images';
 
 export const banners = [
   { img: Images.BannerHomepage, key: '1' },
-  { img: Images.Camera, key: '2' },
-  { img: Images.Products, key: '3' },
-  { img: Images.Services, key: '4' },
+  { img: Images.ProductCard, key: '2' },
+  { img: Images.BannerPreview, key: '3' },
 ];
 
-export const styles = StyleSheet.create({
+export const stylesHome = StyleSheet.create({
   activeDot: {
     backgroundColor: '#FF8D4D',
     width: 15,
@@ -52,8 +52,8 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingTop:
       Platform.OS === 'ios'
-        ? StatusBar.currentHeight + 50
-        : StatusBar.currentHeight + 20,
+        ? StatusBar.currentHeight || 0 + 50
+        : StatusBar.currentHeight || 0 + 20,
     paddingVertical: 4,
     position: 'absolute',
     right: 0,

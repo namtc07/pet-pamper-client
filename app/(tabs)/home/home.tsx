@@ -2,6 +2,7 @@ import Badge from '@/app/_components/Badge';
 import DatePicker from '@/app/_components/date-picker';
 import MenuTabBlock from '@/app/_components/menu-tab-block';
 import ProductList from '@/app/_components/product-list';
+import { banners, stylesHome } from '@/app/_styles/styleHome';
 import Svgs from '@/assets/svgs';
 import StatusbarCustom from '@/components/StatusbarCustom';
 import { StatusBarStyle } from 'expo-status-bar';
@@ -18,7 +19,6 @@ import {
 } from 'react-native';
 import Carousel from 'react-native-reanimated-carousel';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { banners, styles } from './styles';
 
 export const createBackgroundColorInterpolation = (scrollY: Animated.Value) =>
   scrollY.interpolate({
@@ -109,9 +109,9 @@ function HomeScreen() {
   ];
 
   return (
-    <View style={styles.container}>
+    <View style={stylesHome.container}>
       <StatusbarCustom color={colorStatus as StatusBarStyle} />
-      <Animated.View style={[styles.header, { backgroundColor }]}>
+      <Animated.View style={[stylesHome.header, { backgroundColor }]}>
         <Animated.View
           style={{
             opacity: fadeAnim,
@@ -125,20 +125,20 @@ function HomeScreen() {
             name="search-outline"
             size={16}
             color="#999"
-            style={styles.searchIcon}
+            style={stylesHome.searchIcon}
           />
           <TextInput
             clearButtonMode="while-editing"
-            style={styles.searchInput}
+            style={stylesHome.searchInput}
             placeholder="Tìm kiếm sản phẩm, dịch vụ,..."
             placeholderTextColor="#999"
           />
-          <View style={styles.searchIconGroup}>
-            <TouchableOpacity style={styles.icon}>
+          <View style={stylesHome.searchIconGroup}>
+            <TouchableOpacity style={stylesHome.icon}>
               <Icon name="cart-outline" size={22} color={iconColor} />
               <Badge count={99} style={{ top: -10, right: -10 }} />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.icon}>
+            <TouchableOpacity style={stylesHome.icon}>
               <Icon name="notifications-outline" size={22} color={iconColor} />
               <Badge count={3} style={{ top: -10, right: -10 }} />
             </TouchableOpacity>
@@ -160,7 +160,7 @@ function HomeScreen() {
           />
         }
       >
-        <View style={styles.carouselContainer}>
+        <View style={stylesHome.carouselContainer}>
           <Carousel
             loop
             width={width}
@@ -175,7 +175,7 @@ function HomeScreen() {
                 <ImageBackground
                   source={item.img}
                   resizeMode="cover"
-                  style={styles.image}
+                  style={stylesHome.image}
                 />
               </View>
             )}
@@ -183,19 +183,19 @@ function HomeScreen() {
               activeOffsetX: [-10, 10],
             }}
           />
-          <View style={styles.pagination}>
+          <View style={stylesHome.pagination}>
             {banners.map((_, index) => (
               <View
                 style={[
-                  styles.dot,
+                  stylesHome.dot,
                   currentIndex === index
-                    ? styles.activeDot
-                    : styles.inactiveDot,
+                    ? stylesHome.activeDot
+                    : stylesHome.inactiveDot,
                 ]}
               />
             ))}
           </View>
-          <View style={styles.menuTabBLock}>
+          <View style={stylesHome.menuTabBLock}>
             <MenuTabBlock
               mode="multi"
               source={menuTabs}
@@ -205,7 +205,7 @@ function HomeScreen() {
             />
           </View>
         </View>
-        <View style={styles.content}>
+        <View style={stylesHome.content}>
           <View>
             <DatePicker />
           </View>
@@ -222,7 +222,7 @@ function HomeScreen() {
       </ScrollView>
       {showBackToTop && (
         <TouchableOpacity
-          style={styles.backToTopButton}
+          style={stylesHome.backToTopButton}
           onPress={() => {
             scrollViewRef.current?.scrollTo({ y: 0, animated: true });
           }}

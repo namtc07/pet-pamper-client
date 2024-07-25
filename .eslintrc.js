@@ -56,6 +56,7 @@ module.exports = {
       { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
     ],
     'import/no-named-as-default': 'off',
+    'react-native/no-raw-text': 'off',
     // 'no-unused-vars': 'warn',
     // 'no-shadow': 'off',
     // 'react/no-array-index-key': 'off',

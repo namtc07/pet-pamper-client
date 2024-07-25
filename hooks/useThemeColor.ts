@@ -5,8 +5,9 @@
 
 import { useColorScheme } from 'react-native';
 
-import { Colors } from '@/constants/Colors';
+import Colors from '@/constants/Colors';
 
+// eslint-disable-next-line import/prefer-default-export
 export function useThemeColor(
   props: { light?: string, dark?: string },
   colorName: keyof typeof Colors.light & keyof typeof Colors.dark,
